@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import api from '../../api/api'
+
+// Acción para agregar un producto
 export const add_product = createAsyncThunk(
     'product/add_product',
     async (product, { rejectWithValue, fulfillWithValue }) => {
@@ -12,6 +14,7 @@ export const add_product = createAsyncThunk(
     }
 )
 
+// Acción para actualizar un producto
 export const update_product = createAsyncThunk(
     'product/updateProduct',
     async (product, { rejectWithValue, fulfillWithValue }) => {
@@ -24,6 +27,7 @@ export const update_product = createAsyncThunk(
     }
 )
 
+// Acción para actualizar la imagen de un producto
 export const product_image_update = createAsyncThunk(
     'product/product_image_update',
     async ({ oldImage, newImage, productId }, { rejectWithValue, fulfillWithValue }) => {
@@ -40,6 +44,7 @@ export const product_image_update = createAsyncThunk(
     }
 )
 
+// Acción para obtener los productos
 export const get_products = createAsyncThunk(
     'product/get_products',
     async ({ parPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
@@ -52,6 +57,7 @@ export const get_products = createAsyncThunk(
     }
 )
 
+// Acción para obtener un producto específico
 export const get_product = createAsyncThunk(
     'product/get_product',
     async (productId, { rejectWithValue, fulfillWithValue }) => {
@@ -64,7 +70,18 @@ export const get_product = createAsyncThunk(
     }
 )
 
-
+// Acción para eliminar un producto
+export const delete_product = createAsyncThunk(
+    'product/delete_product',
+    async (productId, { rejectWithValue, fulfillWithValue }) => {
+        try {
+            const { data } = await api.delete(`/product-delete/${productId}`, { withCredentials: true })
+            return fulfillWithValue(data)
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
 
 export const productReducer = createSlice({
     name: 'product',
@@ -117,8 +134,21 @@ export const productReducer = createSlice({
             state.product = payload.product
             state.successMessage = payload.message
         },
+        [delete_product.pending]: (state, _) => {
+            state.loader = true
+        },
+        [delete_product.rejected]: (state, { payload }) => {
+            state.loader = false
+            state.errorMessage = payload.error
+        },
+        [delete_product.fulfilled]: (state, { payload }) => {
+            state.loader = false
+            state.successMessage = payload.message
+            // Eliminar el producto del estado local
+            state.products = state.products.filter(product => product._id !== payload.productId)
+        },
     }
-
 })
+
 export const { messageClear } = productReducer.actions
 export default productReducer.reducer

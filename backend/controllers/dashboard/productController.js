@@ -130,6 +130,17 @@ class ProductController {
             }
         });
     }
+
+    delete_product = async (req, res) => {
+        const { productId } = req.params; // Obtener el ID del producto de los parámetros de la ruta
+        try {
+            // Eliminar el producto de la base de datos
+            await productModel.findByIdAndDelete(productId);
+            responseReturn(res, 200, { message: 'Producto eliminado exitosamente' });
+        } catch (error) {
+            responseReturn(res, 500, { error: error.message });
+        }
+    }
 }
 
 module.exports = new ProductController();

@@ -5,17 +5,18 @@ import { GiKnightBanner } from 'react-icons/gi';
 import { useSelector, useDispatch } from 'react-redux';
 import Pagination from '../Pagination';
 import Search from '../components/Search';
-import { get_products } from '../../store/Reducers/productReducer';
+import { get_products, messageClear, delete_product } from '../../store/Reducers/productReducer';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Products = () => {
     const dispatch = useDispatch();
-    const { products, totalProduct } = useSelector(state => state.product);
+    const { products, totalProduct, successMessage, errorMessage } = useSelector(state => state.product);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [searchValue, setSearchValue] = useState('');
     const [parPage, setParPage] = useState(5);
 
-    const baseURL = "http://localhost:5000"; // Cambia esto a la URL de tu servidor
+    const baseURL = "http://localhost:5000";
 
     useEffect(() => {
         const obj = {
@@ -24,11 +25,55 @@ const Products = () => {
             searchValue
         };
         dispatch(get_products(obj));
-    }, [searchValue, currentPage, parPage]);
+    }, [searchValue, currentPage, parPage, dispatch]);
+
+    const handleDelete = (productId) => {
+        // Confirmar eliminación
+        toast((t) => (
+            <span>
+                ¿Estás seguro de que deseas eliminar este producto?
+                <button
+                    onClick={() => {
+                        dispatch(delete_product(productId)).then(() => {
+                            dispatch(get_products({
+                                parPage: parseInt(parPage),
+                                page: parseInt(currentPage),
+                                searchValue
+                            }));
+                        });
+                        toast.dismiss(t.id);
+                    }}
+                    className='ml-2 bg-green-500 text-white px-2 py-1 rounded'
+                >
+                    Sí
+                </button>
+                <button
+                    onClick={() => toast.dismiss(t.id)}
+                    className='ml-2 bg-red-500 text-white px-2 py-1 rounded'
+                >
+                    No
+                </button>
+            </span>
+        ), {
+            duration: 4000
+        });
+    };
+
+    useEffect(() => {
+        if (errorMessage) {
+            toast.error(errorMessage);
+            dispatch(messageClear());
+        }
+        if (successMessage) {
+            toast.success(successMessage);
+            dispatch(messageClear());
+        }
+    }, [successMessage, errorMessage, dispatch]);
 
     return (
         <div className='px-2 lg:px-7 pt-5 '>
-            <div className='w-full p-4  bg-[#283046] rounded-md'>
+            <Toaster position="top-right" reverseOrder={false} />
+            <div className='w-full p-4 bg-[#283046] rounded-md'>
                 <Search setParPage={setParPage} setSearchValue={setSearchValue} searchValue={searchValue} />
                 <div className='relative overflow-x-auto mt-5'>
                     <table className='w-full text-sm text-left text-[#d0d2d6]'>
@@ -76,7 +121,7 @@ const Products = () => {
                                         <div className='flex justify-start items-center gap-4'>
                                             <Link to={`/seller/dashboard/edit-product/${d._id}`} className='p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50'><FaEdit /></Link>
                                             <Link className='p-[6px] bg-green-500 rounded hover:shadow-lg hover:shadow-green-500/50'><FaEye /></Link>
-                                            <button className='p-[6px] bg-red-500 rounded hover:shadow-lg hover:shadow-red-500/50'><FaTrash /></button>
+                                            <button onClick={() => handleDelete(d._id)} className='p-[6px] bg-red-500 rounded hover:shadow-lg hover:shadow-red-500/50'><FaTrash /></button>
                                             <Link to={`/seller/dashboard/add-banner/${d._id}`} className='p-[6px] bg-cyan-500 rounded hover:shadow-lg hover:shadow-cyan-500/50'><GiKnightBanner /></Link>
                                         </div>
                                     </td>
@@ -90,7 +135,7 @@ const Products = () => {
                         <Pagination
                             pageNumber={currentPage}
                             setPageNumber={setCurrentPage}
-                            totalItem={50}
+                            totalItem={totalProduct}
                             parPage={parPage}
                             showItem={4}
                         />
