@@ -10,8 +10,11 @@ import { get_category } from '../../store/Reducers/categoryReducer'
 import { add_product, messageClear } from '../../store/Reducers/productReducer'
 const AddProduct = () => {
     const dispatch = useDispatch()
+    const userInfo = useSelector(state => state.auth.userInfo);
+    console.log(userInfo.ShopName)
     const { categorys } = useSelector(state => state.category)
     const { successMessage, errorMessage, loader } = useSelector(state => state.product)
+    
     useEffect(() => {
         dispatch(get_category({
             searchValue: '',
@@ -87,7 +90,7 @@ const AddProduct = () => {
     useEffect(() => {
         setAllCategory(categorys)
     }, [categorys])
-
+   
     const add = (e) => {
         e.preventDefault()
         const formData = new FormData()
@@ -97,7 +100,7 @@ const AddProduct = () => {
         formData.append('stock', state.stock)
         formData.append('category', category)
         formData.append('discount', state.discount)
-        formData.append('shopName', 'Farid Fashoin')
+        formData.append('shopName', userInfo.shopInfo.shopName);
         formData.append('brand', state.brand)
         for (let i = 0; i < images.length; i++) {
             formData.append('images', images[i])
