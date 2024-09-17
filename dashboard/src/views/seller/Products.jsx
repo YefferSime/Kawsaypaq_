@@ -1,27 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import { FaEdit, FaEye, FaTrash } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import { GiKnightBanner } from 'react-icons/gi'
-import { useSelector, useDispatch } from 'react-redux'
-import Pagination from '../Pagination'
-import Search from '../components/Search'
-import { get_products } from '../../store/Reducers/productReducer'
-const Products = () => {
-    const dispatch = useDispatch()
-    const { products, totalProduct } = useSelector(state => state.product)
+import React, { useState, useEffect } from 'react';
+import { FaEdit, FaEye, FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { GiKnightBanner } from 'react-icons/gi';
+import { useSelector, useDispatch } from 'react-redux';
+import Pagination from '../Pagination';
+import Search from '../components/Search';
+import { get_products } from '../../store/Reducers/productReducer';
 
-    const [currentPage, setCurrentPage] = useState(1)
-    const [searchValue, setSearchValue] = useState('')
-    const [parPage, setParPage] = useState(5)
+const Products = () => {
+    const dispatch = useDispatch();
+    const { products, totalProduct } = useSelector(state => state.product);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [searchValue, setSearchValue] = useState('');
+    const [parPage, setParPage] = useState(5);
+
+    const baseURL = "http://localhost:5000"; // Cambia esto a la URL de tu servidor
 
     useEffect(() => {
         const obj = {
             parPage: parseInt(parPage),
             page: parseInt(currentPage),
             searchValue
-        }
-        dispatch(get_products(obj))
-    }, [searchValue, currentPage, parPage])
+        };
+        dispatch(get_products(obj));
+    }, [searchValue, currentPage, parPage]);
 
     return (
         <div className='px-2 lg:px-7 pt-5 '>
@@ -47,7 +50,7 @@ const Products = () => {
                                 products.map((d, i) => <tr key={i}>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>{i + 1}</td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        <img className='w-[45px] h-[45px]' src={d.images[0]} alt="" />
+                                        <img className='w-[45px] h-[45px]' src={`${baseURL}/${d.images[0]}`} alt="" />
                                     </td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
                                         <span>{d?.name?.slice(0, 16)}...</span>
@@ -95,7 +98,7 @@ const Products = () => {
                 }
             </div>
         </div>
-    )
+    );
 }
 
-export default Products
+export default Products;

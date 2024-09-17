@@ -29,7 +29,7 @@ const publicRoutes = [
     {
         path: '/success?',
         element: <Success />
-    }
+    } 
 
 
 ]

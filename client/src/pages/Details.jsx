@@ -20,7 +20,7 @@ import { add_to_card, messageClear, add_to_wishlist } from '../store/reducers/ca
 import toast from 'react-hot-toast'
 
 const Details = () => {
-
+    const baseURL = "http://localhost:5000";
     const navigate = useNavigate()
     const { slug } = useParams()
     const dispatch = useDispatch()
@@ -178,7 +178,7 @@ const Details = () => {
                     <div className='grid grid-cols-2 md-lg:grid-cols-1 gap-8'>
                         <div>
                             <div className='p-5 border'>
-                                <img className='h-[500px] w-full' src={image ? image : product.images?.[0]} alt="" />
+                            <img className='h-[500px] w-full' src={image ? `${baseURL}/${image}` : `${baseURL}/${product.images?.[0]}`} alt="" />
                             </div>
                             <div className='py-3'>
                                 {
