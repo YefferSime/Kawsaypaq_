@@ -51,6 +51,8 @@ const Card = () => {
             dispatch(quantity_dec(card_id))
         }
     }
+
+    console.log(card_products.length)
     return (
         <div>
             <Headers />

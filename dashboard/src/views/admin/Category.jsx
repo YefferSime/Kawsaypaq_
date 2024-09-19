@@ -9,7 +9,7 @@ import { BsImage } from 'react-icons/bs'
 import toast from 'react-hot-toast'
 import { useSelector, useDispatch } from 'react-redux'
 import Search from '../components/Search'
-import { categoryAdd, messageClear, get_category } from '../../store/Reducers/categoryReducer'
+import { categoryAdd, messageClear, get_category, delete_category } from '../../store/Reducers/categoryReducer'
 const Category = () => {
     const dispatch = useDispatch()
     const { loader, successMessage, errorMessage, categorys } = useSelector(state => state.category)
@@ -22,6 +22,37 @@ const Category = () => {
         name: '',
         image: ''
     })
+
+    const handleDelete = (categoryId) => {
+        toast((t) => (
+            <span>
+                ¿Estás seguro de que deseas eliminar esta categoría?
+                <button
+                    onClick={() => {
+                        dispatch(delete_category(categoryId)).then(() => {
+                            dispatch(get_category({
+                                parPage: parseInt(parPage),
+                                page: parseInt(currentPage),
+                                searchValue
+                            }));
+                        });
+                        toast.dismiss(t.id);
+                    }}
+                    className='ml-2 bg-green-500 text-white px-2 py-1 rounded'
+                >
+                    Sí
+                </button>
+                <button
+                    onClick={() => toast.dismiss(t.id)}
+                    className='ml-2 bg-red-500 text-white px-2 py-1 rounded'
+                >
+                    No
+                </button>
+            </span>
+        ), {
+            duration: 4000
+        });
+    };
 
     const imageHandle = (e) => {
         let files = e.target.files
@@ -95,7 +126,9 @@ const Category = () => {
                                             <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
                                                 <div className='flex justify-start items-center gap-4'>
                                                     <Link className='p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50'><FaEdit /></Link>
-                                                    <Link className='p-[6px] bg-red-500 rounded hover:shadow-lg hover:shadow-red-500/50'><FaTrash /></Link>
+                                                    <button onClick={() => handleDelete(d._id)} className='p-[6px] bg-red-500 rounded hover:shadow-lg hover:shadow-red-500/50'>
+                                                        <FaTrash />
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>)

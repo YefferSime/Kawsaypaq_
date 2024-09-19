@@ -74,6 +74,21 @@ class categoryController {
             console.log(error.message)
         }
     }
+
+    delete_category = async (req, res) => {
+        const { categoryId } = req.params; // Obtener el ID de la categoría de los parámetros de la ruta
+        try {
+            // Eliminar la categoría de la base de datos
+            const category = await categoryModel.findByIdAndDelete(categoryId);
+            if (!category) {
+                return responseReturn(res, 404, { error: 'Categoría no encontrada' });
+            }
+            responseReturn(res, 200, { message: 'Categoría eliminada exitosamente', categoryId });
+        } catch (error) {
+            responseReturn(res, 500, { error: error.message });
+        }
+    }
+    
 }
 
 module.exports = new categoryController()

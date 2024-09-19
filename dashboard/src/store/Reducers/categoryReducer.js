@@ -27,6 +27,18 @@ export const get_category = createAsyncThunk(
     }
 )
 
+export const delete_category = createAsyncThunk(
+    'category/delete_category',
+    async (categoryId, { rejectWithValue, fulfillWithValue }) => {
+        try {
+            const { data } = await api.delete(`/category-delete/${categoryId}`, { withCredentials: true });
+            return fulfillWithValue(data);
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
 
 
 export const categoryReducer = createSlice({
@@ -61,6 +73,19 @@ export const categoryReducer = createSlice({
             state.totalCategory = payload.totalCategory
             state.categorys = payload.categorys
         },
+        [delete_category.pending]: (state) => {
+            state.loader = true;
+        },
+        [delete_category.fulfilled]: (state, { payload }) => {
+            state.loader = false;
+            state.successMessage = payload.message;
+            // Filtrar la categoría eliminada del estado
+            state.categorys = state.categorys.filter(category => category._id !== payload.categoryId);
+        },
+        [delete_category.rejected]: (state, { payload }) => {
+            state.loader = false;
+            state.errorMessage = payload.error;
+        }
     }
 
 })
