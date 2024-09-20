@@ -7,84 +7,84 @@ import { RiProductHuntLine } from 'react-icons/ri'
 export const allNav = [
     {
         id: 1,
-        title: 'Dashboard',
+        title: 'Panel de Control',
         icon: <AiFillDashboard />,
         role: 'admin',
         path: '/admin/dashboard'
     },
     {
         id: 2,
-        title: 'Orders',
+        title: 'Ordenes',
         icon: <AiOutlineShoppingCart />,
         role: 'admin',
         path: '/admin/dashboard/orders'
     },
     {
         id: 3,
-        title: 'Category',
+        title: 'Categorias',
         icon: <BiCategory />,
         role: 'admin',
         path: '/admin/dashboard/category'
     },
     {
         id: 4,
-        title: 'Sellers',
+        title: 'Vendedores',
         icon: <FiUsers />,
         role: 'admin',
         path: '/admin/dashboard/sellers'
     },
     {
         id: 5,
-        title: 'Payment request',
+        title: 'Solicitud de Pago',
         icon: <BsCurrencyDollar />,
         role: 'admin',
         path: '/admin/dashboard/payment-request'
     },
     {
         id: 6,
-        title: 'Deactive Sellers',
+        title: 'Vendedores desactivos',
         icon: <FiUsers />,
         role: 'admin',
         path: '/admin/dashboard/deactive-sellers'
     },
     {
         id: 7,
-        title: 'Sellers Request',
+        title: 'Solicitud de Vendedores',
         icon: <BiLoaderCircle />,
         role: 'admin',
         path: '/admin/dashboard/sellers-request'
     },
     {
         id: 8,
-        title: 'Chat Seller',
+        title: 'Chat con Vendedores',
         icon: <CiChat1 />,
         role: 'admin',
         path: '/admin/dashboard/chat-sellers'
     },
     {
         id: 9,
-        title: 'Dashboard',
+        title: 'Panel de Control',
         icon: <AiFillDashboard />,
         role: 'seller',
         path: '/seller/dashboard'
     },
     {
         id: 10,
-        title: 'Add Product',
+        title: 'Añadir Producto',
         icon: <AiOutlinePlus />,
         role: 'seller',
         path: '/seller/dashboard/add-product'
     },
     {
         id: 11,
-        title: 'All Product',
+        title: 'Todos los Productos',
         icon: <RiProductHuntLine />,
         role: 'seller',
         path: '/seller/dashboard/products'
     },
     {
         id: 11,
-        title: 'All Banner',
+        title: 'Todos los Banners',
         icon: <RiProductHuntLine />,
         role: 'seller',
         path: '/seller/dashboard/banners'
@@ -92,42 +92,42 @@ export const allNav = [
 
     {
         id: 12,
-        title: 'Discount Product',
+        title: 'Descuentos',
         icon: <RiProductHuntLine />,
         role: 'seller',
         path: '/seller/dashboard/discount-products'
     },
     {
         id: 13,
-        title: 'Orders',
+        title: 'Ordenes',
         icon: <AiOutlineShoppingCart />,
         role: 'seller',
         path: '/seller/dashboard/orders'
     },
     {
         id: 14,
-        title: 'Payments',
+        title: 'Pagos',
         icon: <BsCurrencyDollar />,
         role: 'seller',
         path: '/seller/dashboard/payments'
     },
     {
         id: 15,
-        title: 'Chat Customer',
+        title: 'Chat',
         icon: <BsChat />,
         role: 'seller',
         path: '/seller/dashboard/chat-customer'
     },
     {
         id: 16,
-        title: 'Chat Support',
+        title: 'Soporte Tecnico',
         icon: <CiChat1 />,
         role: 'seller',
         path: '/seller/dashboard/chat-support'
     },
     {
         id: 17,
-        title: 'Profile',
+        title: 'Perfil',
         icon: <FiUsers />,
         role: 'seller',
         path: '/seller/dashboard/profile'

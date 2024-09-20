@@ -28,12 +28,12 @@ const SellerRequest = () => {
                     <table className='w-full text-sm text-left text-[#d0d2d6]'>
                         <thead className='text-xs text-[#d0d2d6] uppercase border-b border-slate-700'>
                             <tr>
-                                <th scope='col' className='py-3 px-4'>No</th>
-                                <th scope='col' className='py-3 px-4'>Name</th>
-                                <th scope='col' className='py-3 px-4'>Email</th>
-                                <th scope='col' className='py-3 px-4'>Payment Status</th>
-                                <th scope='col' className='py-3 px-4'>Status</th>
-                                <th scope='col' className='py-3 px-4'>Action</th>
+                                <th scope='col' className='py-3 px-4'>N°</th>
+                                <th scope='col' className='py-3 px-4'>Nombre</th>
+                                <th scope='col' className='py-3 px-4'>Correo</th>
+                                <th scope='col' className='py-3 px-4'>Estado de Pago</th>
+                                <th scope='col' className='py-3 px-4'>Estado</th>
+                                <th scope='col' className='py-3 px-4'>Acción</th>
                             </tr>
                         </thead>
                         <tbody className='text-sm font-normal'>

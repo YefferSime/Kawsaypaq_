@@ -76,11 +76,11 @@ const Shops = () => {
                 <div className='absolute left-0 top-0 w-full h-full bg-[#2422228a]'>
                     <div className='w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
                         <div className='flex flex-col justify-center gap-1 items-center h-full w-full text-white'>
-                            <h2 className='text-3xl font-bold'>Shop.my</h2>
+                            <h2 className='text-3xl font-bold'>Tienda</h2>
                             <div className='flex justify-center items-center gap-2 text-2xl w-full'>
-                                <Link to='/'>Home</Link>
+                                <Link to='/'>Inicio</Link>
                                 <span className='pt-1'><MdOutlineKeyboardArrowRight /></span>
-                                <span>Products</span>
+                                <span>Productos</span>
                             </div>
                         </div>
                     </div>
@@ -89,11 +89,11 @@ const Shops = () => {
             <section className='py-16'>
                 <div className='w-[85%] md:w-[90%%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
                     <div className={`md:block hidden ${!filter ? 'mb-6' : 'mb-0'}`}>
-                        <button onClick={() => setFilter(!filter)} className='text-center w-full py-2 px-3 bg-indigo-500 text-white'>Filter Product</button>
+                        <button onClick={() => setFilter(!filter)} className='text-center w-full py-2 px-3 bg-indigo-500 text-white'>Filtrar Productos</button>
                     </div>
                     <div className='w-full flex flex-wrap'>
                         <div className={`w-3/12 md-lg:w-4/12 md:w-full pr-8 ${filter ? 'md:h-0 md:overflow-hidden md:mb-6' : 'md:h-auto md:overflow-auto md:mb-0'}`}>
-                            <h2 className='text-3xl font-bold mb-3 text-slate-600'>Category</h2>
+                            <h2 className='text-3xl font-bold mb-3 text-slate-600'>Categorias</h2>
                             <div className='py-2'>
                                 {
                                     categorys.map((c, i) => <div className='flex justify-start items-center gap-2 py-1' key={i}>
@@ -103,7 +103,7 @@ const Shops = () => {
                                 }
                             </div>
                             <div className='py-2 flex flex-col gap-5'>
-                                <h2 className='text-3xl font-bold mb-3 text-slate-600'>Price</h2>
+                                <h2 className='text-3xl font-bold mb-3 text-slate-600'>Precio</h2>
                                 <Range
                                     step={5}
                                     min={priceRange.low}
@@ -125,7 +125,7 @@ const Shops = () => {
                                 </div>
                             </div>
                             <div className='py-3 flex flex-col gap-4'>
-                                <h2 className='text-3xl font-bold mb-3 text-slate-600'>Rating</h2>
+                                <h2 className='text-3xl font-bold mb-3 text-slate-600'>Ranking</h2>
                                 <div className='flex flex-col gap-3'>
                                     <div onClick={() => setRatingQ(5)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
                                         <span><AiFillStar /></span>
@@ -172,18 +172,18 @@ const Shops = () => {
                                 </div>
                             </div>
                             <div className='py-5 flex flex-col gap-4 md:hidden'>
-                                <Products title="Latest Products" products={latest_product} />
+                                <Products title="Últimos productos" products={latest_product} />
                             </div>
                         </div>
                         <div className='w-9/12 md-lg:w-8/12 md:w-full'>
                             <div className='pl-8 md:pl-0'>
                                 <div className='py-4 bg-white mb-10 px-3 rounded-md flex justify-between items-start border'>
-                                    <h2 className='text-lg font-medium text-slate-600'>{totalProduct} Products</h2>
+                                    <h2 className='text-lg font-medium text-slate-600'>{totalProduct} Productos</h2>
                                     <div className='flex justify-center items-center gap-3'>
                                         <select onChange={(e) => setSortPrice(e.target.value)} className='p-1 border outline-0 text-slate-600 font-semibold' name="" id="">
-                                            <option value="">Sort By</option>
-                                            <option value="low-to-high">Low to High Price</option>
-                                            <option value="high-to-low">High to Low Price</option>
+                                            <option value="">Ordenar por...</option>
+                                            <option value="low-to-high">Menor a mayor</option>
+                                            <option value="high-to-low">Mayor a menor</option>
                                         </select>
                                         <div className='flex justify-center items-start gap-4 md-lg:hidden'>
                                             <div onClick={() => setStyles('grid')} className={`p-2 ${styles === 'grid' && 'bg-slate-300'} text-slate-600 hover:bg-slate-300 cursor-pointer rounded-sm`}>

@@ -78,27 +78,27 @@ const Profile = () => {
                             <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-slate-800 rounded-md relative'>
                                 <span className='p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50 absolute right-2 top-2 cursor-pointer'><FaEdit /></span>
                                 <div className='flex gap-2'>
-                                    <span>Name : </span>
+                                    <span>Nombre : </span>
                                     <span>{userInfo.name}</span>
                                 </div>
                                 <div className='flex gap-2'>
-                                    <span>Email : </span>
+                                    <span>Correo : </span>
                                     <span>{userInfo.email}</span>
                                 </div>
                                 <div className='flex gap-2'>
-                                    <span>Role : </span>
+                                    <span>Rol : </span>
                                     <span>{userInfo.role}</span>
                                 </div>
                                 <div className='flex gap-2'>
-                                    <span>Status : </span>
+                                    <span>Estado : </span>
                                     <span>{userInfo.status}</span>
                                 </div>
                                 <div className='flex gap-2'>
-                                    <span>Payment Account : </span>
+                                    <span>Cuenta de Pago : </span>
                                     <p>
                                         {
                                             userInfo.payment === 'active' ? <span className='bg-red-500 text-white text-xs cursor-pointer font-normal ml-2 px-2 py-0.5 rounded '>{userInfo.payment}</span> : <span onClick={() => dispatch(create_stripe_connect_account())} className='bg-blue-500 text-white text-xs cursor-pointer font-normal ml-2 px-2 py-0.5 rounded '>
-                                                click active
+                                                Activar
                                             </span>
                                         }
                                     </p>
@@ -109,19 +109,19 @@ const Profile = () => {
                             {
                                 !userInfo?.shopInfo ? <form onSubmit={add}>
                                     <div className='flex flex-col w-full gap-1 mb-3'>
-                                        <label htmlFor="Shop">Shop Name</label>
+                                        <label htmlFor="Shop">Tienda</label>
                                         <input value={state.shopName} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='shop name' name='shopName' id='Shop' />
                                     </div>
                                     <div className='flex flex-col w-full gap-1'>
-                                        <label htmlFor="div">Division</label>
+                                        <label htmlFor="div">División</label>
                                         <input value={state.division} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='division' name='division' id='div' />
                                     </div>
                                     <div className='flex flex-col w-full gap-1 mb-3'>
-                                        <label htmlFor="district">District</label>
+                                        <label htmlFor="district">Distrito</label>
                                         <input value={state.district} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='district' name='district' id='district' />
                                     </div>
                                     <div className='flex flex-col w-full gap-1 mb-3'>
-                                        <label htmlFor="sub">Sub District</label>
+                                        <label htmlFor="sub">Sub Distrito</label>
                                         <input value={state.sub_district} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='sub district' name='sub_district' id='sub' />
                                     </div>
                                     <button disabled={loader ? true : false} className='bg-blue-500 w-[190px] hover:shadow-blue-500/20 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3'>
@@ -132,19 +132,19 @@ const Profile = () => {
                                 </form> : <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-slate-800 rounded-md relative'>
                                     <span className='p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50 absolute right-2 top-2 cursor-pointer'><FaEdit /></span>
                                     <div className='flex gap-2'>
-                                        <span>Shop Name : </span>
+                                        <span>Tienda : </span>
                                         <span>{userInfo.shopInfo?.shopName}</span>
                                     </div>
                                     <div className='flex gap-2'>
-                                        <span>Division : </span>
+                                        <span>División : </span>
                                         <span>{userInfo.shopInfo?.division}</span>
                                     </div>
                                     <div className='flex gap-2'>
-                                        <span>District : </span>
+                                        <span>Distrito : </span>
                                         <span>{userInfo.shopInfo?.district}</span>
                                     </div>
                                     <div className='flex gap-2'>
-                                        <span>Sub District : </span>
+                                        <span>Sub Distrito : </span>
                                         <span>{userInfo.shopInfo?.sub_district}</span>
                                     </div>
                                 </div>
@@ -155,21 +155,21 @@ const Profile = () => {
                 <div className='w-full md:w-6/12'>
                     <div className='w-full pl-0 md:pl-7 mt-6 md:mt-0  '>
                         <div className='bg-[#283046] rounded-md text-[#d0d2d6] p-4'>
-                            <h1 className='text-[#d0d2d6] text-lg mb-3 font-semibold'>Change Password</h1>
+                            <h1 className='text-[#d0d2d6] text-lg mb-3 font-semibold'>Cambiar Contraseña</h1>
                             <form>
                                 <div className='flex flex-col w-full gap-1 mb-3'>
-                                    <label htmlFor="email">Email</label>
-                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="email" placeholder='email' name='email' id='email' />
+                                    <label htmlFor="email">Correo</label>
+                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="email" placeholder='Tu correo' name='email' id='email<' />
                                 </div>
                                 <div className='flex flex-col w-full gap-1'>
-                                    <label htmlFor="o_password">Old Password</label>
-                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="password" placeholder='old password' name='old_password' id='o_password' />
+                                    <label htmlFor="o_password">Antigua Contraseña</label>
+                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="password" placeholder='Tu antigua contraseña' name='old_password' id='o_password' />
                                 </div>
                                 <div className='flex flex-col w-full gap-1'>
-                                    <label htmlFor="n_password">New Password</label>
-                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="password" placeholder='new password' name='new_password' id='n_password' />
+                                    <label htmlFor="n_password">Nueva Contraseña</label>
+                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="password" placeholder='Tu nueva contraseña' name='new_password' id='n_password' />
                                 </div>
-                                <button className='bg-blue-500 hover:shadow-blue-500/50 hover:shadow-lg text-white rounded-md px-7 py-2 mt-5 '>Submit</button>
+                                <button className='bg-blue-500 hover:shadow-blue-500/50 hover:shadow-lg text-white rounded-md px-7 py-2 mt-5 '>Actualizar</button>
                             </form>
                         </div>
                     </div>

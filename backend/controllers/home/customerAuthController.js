@@ -10,7 +10,7 @@ class customerAuthController {
         try {
             const customer = await customerModel.findOne({ email })
             if (customer) {
-                responseReturn(res, 404, { error: 'Email already exits' })
+                responseReturn(res, 404, { error: 'Este correo ya existe' })
             } else {
                 const createCustomer = await customerModel.create({
                     name: name.trim(),
@@ -30,7 +30,7 @@ class customerAuthController {
                 res.cookie('customerToken', token, {
                     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
                 })
-                responseReturn(res, 201, { message: 'Register success', token })
+                responseReturn(res, 201, { message: 'Registro exitoso', token })
             }
         } catch (error) {
             console.log(error.message)
@@ -53,12 +53,12 @@ class customerAuthController {
                     res.cookie('customerToken', token, {
                         expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
                     })
-                    responseReturn(res, 201, { message: 'Login success', token })
+                    responseReturn(res, 201, { message: 'Se inicio sesión', token })
                 } else {
-                    responseReturn(res, 404, { error: "Password wrong" })
+                    responseReturn(res, 404, { error: "Contraseña Incorrecta" })
                 }
             } else {
-                responseReturn(res, 404, { error: 'Email not found' })
+                responseReturn(res, 404, { error: 'Correo no encontrado' })
             }
         } catch (error) {
             console.log(error.message)
@@ -69,7 +69,7 @@ class customerAuthController {
         res.cookie('customerToken',"",{
             expires : new Date(Date.now())
         })
-        responseReturn(res,200,{message : 'Logout success'})
+        responseReturn(res,200,{message : 'Se cerro la sesión'})
     }
 }
 

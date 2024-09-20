@@ -31,12 +31,12 @@ const Orders = () => {
                     <table className='w-full text-sm text-left text-[#d0d2d6]'>
                         <thead className='text-sm text-[#d0d2d6] uppercase border-b border-slate-700'>
                             <tr>
-                                <th scope='col' className='py-3 px-4'>Order Id</th>
-                                <th scope='col' className='py-3 px-4'>Price</th>
-                                <th scope='col' className='py-3 px-4'>Payment Status</th>
-                                <th scope='col' className='py-3 px-4'>Order Status</th>
-                                <th scope='col' className='py-3 px-4'>Date</th>
-                                <th scope='col' className='py-3 px-4'>Action</th>
+                                <th scope='col' className='py-3 px-4'>ID Orden</th>
+                                <th scope='col' className='py-3 px-4'>Precio</th>
+                                <th scope='col' className='py-3 px-4'>Estado de Pago</th>
+                                <th scope='col' className='py-3 px-4'>Estado de Orden</th>
+                                <th scope='col' className='py-3 px-4'>Fecha</th>
+                                <th scope='col' className='py-3 px-4'>Acción</th>
                             </tr>
                         </thead>
                         <tbody>

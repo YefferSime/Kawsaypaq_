@@ -32,17 +32,17 @@ const Orders = () => {
                         <option value="5">15</option>
                         <option value="5">25</option>
                     </select>
-                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='search' />
+                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='Buscar...' />
                 </div>
                 <div className='relative mt-5 overflow-x-auto'>
                     <div className='w-full text-sm text-left [#d0d2d6]'>
                         <div className='text-sm text-[#d0d2d6] uppercase border-b border-slate-700'>
                             <div className='flex justify-between items-start'>
-                                <div className='py-3 w-[25%]'>Order Id</div>
-                                <div className='py-3 w-[13%]'>Price</div>
-                                <div className='py-3 w-[18%]'>Payment Status</div>
-                                <div className='py-3 w-[18%]'>Order Status</div>
-                                <div className='py-3 w-[18%]'>Action</div>
+                                <div className='py-3 w-[25%]'>ID Orden</div>
+                                <div className='py-3 w-[13%]'>Precio</div>
+                                <div className='py-3 w-[18%]'>Estado de Pago</div>
+                                <div className='py-3 w-[18%]'>Estado de la Orden</div>
+                                <div className='py-3 w-[18%]'>Acción</div>
                                 <div className='py-3 w-[8%]'>
                                     <MdKeyboardArrowDown />
                                 </div>

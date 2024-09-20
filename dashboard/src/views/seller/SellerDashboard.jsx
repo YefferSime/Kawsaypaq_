@@ -22,15 +22,15 @@ const SellerDashboard = () => {
     const state = {
         series: [
             {
-                name: "Orders",
+                name: "Ordenes",
                 data: [34, 65, 34, 65, 34, 34, 34, 56, 23, 67, 23, 45]
             },
             {
-                name: "Revenue",
+                name: "Ingresos",
                 data: [34, 32, 45, 32, 34, 34, 43, 56, 65, 67, 45, 78]
             },
             {
-                name: "Seles",
+                name: "Ventas",
                 data: [78, 32, 34, 54, 65, 34, 54, 21, 54, 43, 45, 43]
             }
         ],
@@ -55,7 +55,7 @@ const SellerDashboard = () => {
                 dashArray: 0
             },
             xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apl', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
             },
             legend: {
                 position: 'top'
@@ -92,7 +92,7 @@ const SellerDashboard = () => {
                 <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3'>
                     <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
                         <h2 className='text-3xl font-bold'>${totalSale}</h2>
-                        <span className='text-md font-medium'>Total Sales</span>
+                        <span className='text-md font-medium'>Ventas Totales</span>
                     </div>
                     <div className='w-[46px] h-[47px] rounded-full bg-[#28c76f1f] flex justify-center items-center text-xl'>
                         <BsCurrencyDollar className='text-[#28c76f] shadow-lg' />
@@ -101,7 +101,7 @@ const SellerDashboard = () => {
                 <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3'>
                     <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
                         <h2 className='text-3xl font-bold'>{totalProduct}</h2>
-                        <span className='text-md font-medium'>Products</span>
+                        <span className='text-md font-medium'>Productos</span>
                     </div>
                     <div className='w-[46px] h-[47px] rounded-full bg-[#e000e81f] flex justify-center items-center text-xl'>
                         <RiProductHuntLine className='text-[#cd00e8] shadow-lg' />
@@ -110,7 +110,7 @@ const SellerDashboard = () => {
                 <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3'>
                     <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
                         <h2 className='text-3xl font-bold'>{totalOrder}</h2>
-                        <span className='text-md font-medium'>Orders</span>
+                        <span className='text-md font-medium'>Ordenes</span>
                     </div>
                     <div className='w-[46px] h-[47px] rounded-full bg-[#00cfe81f] flex justify-center items-center text-xl'>
                         <AiOutlineShoppingCart className='text-[#00cfe8] shadow-lg' />
@@ -119,7 +119,7 @@ const SellerDashboard = () => {
                 <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3'>
                     <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
                         <h2 className='text-3xl font-bold'>{totalPendingOrder}</h2>
-                        <span className='text-md font-medium'>Pending orders</span>
+                        <span className='text-md font-medium'>Ordenes Pendientes</span>
                     </div>
                     <div className='w-[46px] h-[47px] rounded-full bg-[#7367f01f] flex justify-center items-center text-xl'>
                         <AiOutlineShoppingCart className='text-[#7367f0] shadow-lg' />
@@ -135,8 +135,8 @@ const SellerDashboard = () => {
                 <div className='w-full lg:w-5/12 lg:pl-4 mt-6 lg:mt-0'>
                     <div className='w-full bg-[#283046] p-4 rounded-md text-[#d0d2d6]'>
                         <div className='flex justify-between items-center'>
-                            <h2 className='font-semibold text-lg text-[#d0d2d6] pb-3'>Recent customer message</h2>
-                            <Link className='font-semibold text-sm text-[#d0d2d6]'>View All</Link>
+                            <h2 className='font-semibold text-lg text-[#d0d2d6] pb-3'>Mensaje más reciente</h2>
+                            <Link className='font-semibold text-sm text-[#d0d2d6]'>Ver todo</Link>
                         </div>
                         <div className='flex flex-col gap-2 pt-6 text-[#d0d2d6]'>
                             <ol className='relative border-1 border-slate-600 ml-4'>
@@ -167,18 +167,18 @@ const SellerDashboard = () => {
             </div>
             <div className='w-full p-4  bg-[#283046] rounded-md mt-6'>
                 <div className='flex justify-between items-center'>
-                    <h2 className='font-semibold text-lg text-[#d0d2d6] pb-3'>Recent Orders</h2>
-                    <Link to='/seller/dashboard/orders' className='font-semibold text-sm text-[#d0d2d6]'>View All</Link>
+                    <h2 className='font-semibold text-lg text-[#d0d2d6] pb-3'>Ordenes Recientes</h2>
+                    <Link to='/seller/dashboard/orders' className='font-semibold text-sm text-[#d0d2d6]'>Ver todo</Link>
                 </div>
                 <div className='relative overflow-x-auto'>
                     <table className='w-full text-sm text-left text-[#d0d2d6]'>
                         <thead className='text-sm text-[#d0d2d6] uppercase border-b border-slate-700'>
                             <tr>
-                                <th scope='col' className='py-3 px-4'>Order Id</th>
-                                <th scope='col' className='py-3 px-4'>Price</th>
-                                <th scope='col' className='py-3 px-4'>Payment Status</th>
-                                <th scope='col' className='py-3 px-4'>Order Status</th>
-                                <th scope='col' className='py-3 px-4'>Active</th>
+                                <th scope='col' className='py-3 px-4'>ID</th>
+                                <th scope='col' className='py-3 px-4'>Precio</th>
+                                <th scope='col' className='py-3 px-4'>Estado de Pago</th>
+                                <th scope='col' className='py-3 px-4'>Estado de la Orden</th>
+                                <th scope='col' className='py-3 px-4'>Activo</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -57,7 +57,7 @@ const SellerToAdmin = () => {
                                     }
 
                                 </div>
-                                <h2 className='text-base text-white font-semibold'>Support</h2>
+                                <h2 className='text-base text-white font-semibold'>Soporte de Tecnico</h2>
                             </div>
                         </div>
                         <div className='py-4'>
@@ -96,8 +96,8 @@ const SellerToAdmin = () => {
                             </div>
                         </div>
                         <form onSubmit={send} className='flex gap-3'>
-                            <input value={text} onChange={(e) => setText(e.target.value)} className='w-full flex justify-between px-2 border border-slate-700 items-center py-[5px] focus:border-blue-500 rounded-md outline-none bg-transparent text-[#d0d2d6]' type="text" placeholder='input your message' />
-                            <button className='shadow-lg bg-cyan-500 hover:shadow-cyan-500/50 text-semibold w-[75px] h-[35px] rounded-md text-white flex justify-center items-center'>Send</button>
+                            <input value={text} onChange={(e) => setText(e.target.value)} className='w-full flex justify-between px-2 border border-slate-700 items-center py-[5px] focus:border-blue-500 rounded-md outline-none bg-transparent text-[#d0d2d6]' type="text" placeholder='Enviar un mensaje' />
+                            <button className='shadow-lg bg-cyan-500 hover:shadow-cyan-500/50 text-semibold w-[75px] h-[35px] rounded-md text-white flex justify-center items-center'>Enviar</button>
                         </form>
                     </div>
                 </div>
