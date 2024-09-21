@@ -48,7 +48,7 @@ const Profile = () => {
         <div className='px-2 lg:px-7 py-5'>
             <div className='w-full flex flex-wrap'>
                 <div className='w-full md:w-6/12'>
-                    <div className='w-full p-4  bg-[#283046] rounded-md text-[#d0d2d6]'>
+                    <div className='w-full p-4  bg-[#1C1C1C] rounded-md text-[#d0d2d6]'>
                         <div className='flex justify-center items-center py-3'>
                             {
                                 userInfo?.image ? <label htmlFor="img" className='h-[210px] w-[300px] relative p-3 cursor-pointer overflow-hidden'>
@@ -154,7 +154,7 @@ const Profile = () => {
                 </div>
                 <div className='w-full md:w-6/12'>
                     <div className='w-full pl-0 md:pl-7 mt-6 md:mt-0  '>
-                        <div className='bg-[#283046] rounded-md text-[#d0d2d6] p-4'>
+                        <div className='bg-[#1C1C1C] rounded-md text-[#d0d2d6] p-4'>
                             <h1 className='text-[#d0d2d6] text-lg mb-3 font-semibold'>Cambiar Contraseña</h1>
                             <form>
                                 <div className='flex flex-col w-full gap-1 mb-3'>

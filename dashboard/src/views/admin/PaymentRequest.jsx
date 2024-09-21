@@ -59,11 +59,11 @@ const PaymentRequest = () => {
 
   return (
     <div className='px-2 lg:px-7 pt-5'>
-      <div className='w-full p-4  bg-[#283046] rounded-md text-[#d0d2d6]'>
+      <div className='w-full p-4  bg-[#1C1C1C] rounded-md text-[#d0d2d6]'>
         <h2 className='text-xl font-medium pb-5'>Solicitud de Retiro</h2>
         <div className='w-full'>
           <div className='w-full overflow-x-auto'>
-            <div className='flex bg-[#161d31] uppercase text-xs min-w-[340px]'>
+            <div className='flex bg-[#1C1C1] uppercase text-xs min-w-[340px]'>
               <div className='w-[25%] p-2'>N°</div>
               <div className='w-[25%] p-2'>Monto</div>
               <div className='w-[25%] p-2'>Estado</div>

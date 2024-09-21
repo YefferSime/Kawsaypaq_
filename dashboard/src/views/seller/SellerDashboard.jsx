@@ -89,7 +89,7 @@ const SellerDashboard = () => {
     return (
         <div className='px-2 md:px-7 py-5'>
             <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7'>
-                <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3'>
+                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
                     <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
                         <h2 className='text-3xl font-bold'>${totalSale}</h2>
                         <span className='text-md font-medium'>Ventas Totales</span>
@@ -98,7 +98,7 @@ const SellerDashboard = () => {
                         <BsCurrencyDollar className='text-[#28c76f] shadow-lg' />
                     </div>
                 </div>
-                <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3'>
+                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
                     <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
                         <h2 className='text-3xl font-bold'>{totalProduct}</h2>
                         <span className='text-md font-medium'>Productos</span>
@@ -107,7 +107,7 @@ const SellerDashboard = () => {
                         <RiProductHuntLine className='text-[#cd00e8] shadow-lg' />
                     </div>
                 </div>
-                <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3'>
+                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
                     <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
                         <h2 className='text-3xl font-bold'>{totalOrder}</h2>
                         <span className='text-md font-medium'>Ordenes</span>
@@ -116,7 +116,7 @@ const SellerDashboard = () => {
                         <AiOutlineShoppingCart className='text-[#00cfe8] shadow-lg' />
                     </div>
                 </div>
-                <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3'>
+                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
                     <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
                         <h2 className='text-3xl font-bold'>{totalPendingOrder}</h2>
                         <span className='text-md font-medium'>Ordenes Pendientes</span>
@@ -128,12 +128,12 @@ const SellerDashboard = () => {
             </div>
             <div className='w-full flex flex-wrap mt-7'>
                 <div className='w-full lg:w-7/12 lg:pr-3'>
-                    <div className='w-full bg-[#283046] p-4 rounded-md'>
+                    <div className='w-full bg-[#1C1C1C] p-4 rounded-md'>
                         <Chart options={state.options} series={state.series} type='bar' height={350} />
                     </div>
                 </div>
                 <div className='w-full lg:w-5/12 lg:pl-4 mt-6 lg:mt-0'>
-                    <div className='w-full bg-[#283046] p-4 rounded-md text-[#d0d2d6]'>
+                    <div className='w-full bg-[#1C1C1C] p-4 rounded-md text-[#d0d2d6]'>
                         <div className='flex justify-between items-center'>
                             <h2 className='font-semibold text-lg text-[#d0d2d6] pb-3'>Mensaje más reciente</h2>
                             <Link className='font-semibold text-sm text-[#d0d2d6]'>Ver todo</Link>
@@ -165,7 +165,7 @@ const SellerDashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className='w-full p-4  bg-[#283046] rounded-md mt-6'>
+            <div className='w-full p-4  bg-[#1C1C1C] rounded-md mt-6'>
                 <div className='flex justify-between items-center'>
                     <h2 className='font-semibold text-lg text-[#d0d2d6] pb-3'>Ordenes Recientes</h2>
                     <Link to='/seller/dashboard/orders' className='font-semibold text-sm text-[#d0d2d6]'>Ver todo</Link>

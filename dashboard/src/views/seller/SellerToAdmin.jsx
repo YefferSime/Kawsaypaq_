@@ -44,7 +44,7 @@ const SellerToAdmin = () => {
 
     return (
         <div className='px-2 lg:px-7 py-5'>
-            <div className='w-full bg-[#283046] px-4 py-4 rounded-md h-[calc(100vh-140px)]'>
+            <div className='w-full bg-[#1C1C1C] px-4 py-4 rounded-md h-[calc(100vh-140px)]'>
                 <div className='flex w-full h-full relative'>
 
                     <div className='w-full md:pl-4'>
