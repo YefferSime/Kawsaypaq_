@@ -27,28 +27,28 @@ const DeactiveSellers = () => {
 
     return (
         <div className='px-2 lg:px-7 pt-5'>
-            <div className='w-full p-4  bg-[#283046] rounded-md'>
+            <div className='w-full p-4  bg-[#1C1C1C] rounded-md'>
                 <div className='flex justify-between items-center'>
                     <select onChange={(e) => setParPage(parseInt(e.target.value))} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]'>
                         <option value="5">5</option>
                         <option value="5">15</option>
                         <option value="5">25</option>
                     </select>
-                    <input onChange={e => setSearchValue(e.target.value)} value={searchValue} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='search' />
+                    <input onChange={e => setSearchValue(e.target.value)} value={searchValue} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='Buscar...' />
                 </div>
                 <div className='relative overflow-x-auto'>
                     <table className='w-full text-sm text-left text-[#d0d2d6]'>
                         <thead className='text-xs text-[#d0d2d6] uppercase border-b border-slate-700'>
                             <tr>
-                                <th scope='col' className='py-3 px-4'>No</th>
-                                <th scope='col' className='py-3 px-4'>Image</th>
-                                <th scope='col' className='py-3 px-4'>Name</th>
-                                <th scope='col' className='py-3 px-4'>Shop Name</th>
-                                <th scope='col' className='py-3 px-4'>Payment Status</th>
-                                <th scope='col' className='py-3 px-4'>Email</th>
-                                <th scope='col' className='py-3 px-4'>Devision</th>
-                                <th scope='col' className='py-3 px-4'>District</th>
-                                <th scope='col' className='py-3 px-4'>Action</th>
+                                <th scope='col' className='py-3 px-4'>N°</th>
+                                <th scope='col' className='py-3 px-4'>Imagen</th>
+                                <th scope='col' className='py-3 px-4'>Nombre</th>
+                                <th scope='col' className='py-3 px-4'>Tienda</th>
+                                <th scope='col' className='py-3 px-4'>Estado de Pago</th>
+                                <th scope='col' className='py-3 px-4'>Correo</th>
+                                <th scope='col' className='py-3 px-4'>División</th>
+                                <th scope='col' className='py-3 px-4'>Distrito</th>
+                                <th scope='col' className='py-3 px-4'>Acción</th>
                             </tr>
                         </thead>
                         <tbody className='text-sm font-normal'>

@@ -86,7 +86,7 @@ const Chat = () => {
                 <div className={`w-[230px] md-lg:absolute bg-white transition-all md-lg:h-full ${show ? 'left-0' : '-left-[350px]'} `}>
                     <div className='flex justify-center gap-3 items-center text-slate-600 text-xl h-[50px]'>
                         <span><AiOutlineMessage /></span>
-                        <span>Message</span>
+                        <span>Mensajes</span>
                     </div>
                     <div className='w-full flex flex-col text-slate-600 py-4 h-[400px] pr-3'>
                         {
@@ -166,7 +166,7 @@ const Chat = () => {
                                 </div>
                             </div>
                         </div> : <div onClick={()=>setShow(true)} className='w-full flex justify-center items-center text-lg ont-bold text-slate-600 h-[400px]'>
-                            <span>select seller</span>
+                            <span>Selecciona un vendedor...</span>
                         </div>
                     }
                 </div>

@@ -73,12 +73,12 @@ const ChatSeller = () => {
 
     return (
         <div className='px-2 lg:px-7 py-5'>
-            <div className='w-full bg-[#283046] px-4 py-4 rounded-md h-[calc(100vh-140px)]'>
+            <div className='w-full bg-[#1C1C1C] px-4 py-4 rounded-md h-[calc(100vh-140px)]'>
                 <div className='flex w-full h-full relative'>
                     <div className={`w-[280px] h-full absolute z-10 ${show ? '-left-[16px]' : '-left-[336px]'} md:left-0 md:relative transition-all`}>
                         <div className='w-full h-[calc(100vh-177px)] bg-[#252b3b] md:bg-transparent overflow-y-auto'>
                             <div className='flex text-xl justify-between items-center p-4 md:p-0 md:px-3 md:pb-3 text-white'>
-                                <h2>Sellers</h2>
+                                <h2>Vendedores</h2>
                                 <span onClick={() => setShow(!show)} className='block cursor-pointer md:hidden'><IoMdClose /></span>
                             </div>
                             {
@@ -147,14 +147,14 @@ const ChatSeller = () => {
                                         }
                                     }) : <div className='w-full h-full flex justify-center items-center flex-col gap-2 text-white'>
                                         <span><BsEmojiSmile /></span>
-                                        <span>Select seller</span>
+                                        <span>Selecciona un vendedor...</span>
                                     </div>
                                 }
                             </div>
                         </div>
                         <form onSubmit={send} className='flex gap-3'>
-                            <input value={text} onChange={(e) => setText(e.target.value)} readOnly={sellerId ? false : true} className='w-full flex justify-between px-2 border border-slate-700 items-center py-[5px] focus:border-blue-500 rounded-md outline-none bg-transparent text-[#d0d2d6]' type="text" placeholder='input your message' />
-                            <button disabled={sellerId ? false : true} className='shadow-lg bg-cyan-500 hover:shadow-cyan-500/50 text-semibold w-[75px] h-[35px] rounded-md text-white flex justify-center items-center'>Send</button>
+                            <input value={text} onChange={(e) => setText(e.target.value)} readOnly={sellerId ? false : true} className='w-full flex justify-between px-2 border border-slate-700 items-center py-[5px] focus:border-blue-500 rounded-md outline-none bg-transparent text-[#d0d2d6]' type="text" placeholder='Escribe un mensaje' />
+                            <button disabled={sellerId ? false : true} className='shadow-lg bg-cyan-500 hover:shadow-cyan-500/50 text-semibold w-[75px] h-[35px] rounded-md text-white flex justify-center items-center'>Enviar</button>
                         </form>
                     </div>
                 </div>

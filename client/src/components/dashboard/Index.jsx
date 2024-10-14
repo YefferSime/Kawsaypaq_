@@ -38,7 +38,7 @@ const Index = () => {
                     </div>
                     <div className='flex flex-col justify-start items-start text-slate-600'>
                         <h2 className='text-3xl font-bold'>{totalOrder}</h2>
-                        <span>Orders</span>
+                        <span>Mis Ordenes</span>
                     </div>
                 </div>
                 <div className='flex justify-center items-center p-5 bg-white rounded-md gap-5'>
@@ -49,7 +49,7 @@ const Index = () => {
                     </div>
                     <div className='flex flex-col justify-start items-start text-slate-600'>
                         <h2 className='text-3xl font-bold'>{pendingOrder}</h2>
-                        <span>Pending Orders</span>
+                        <span>Ordenes Pendientes</span>
                     </div>
                 </div>
                 <div className='flex justify-center items-center p-5 bg-white rounded-md gap-5'>
@@ -60,22 +60,22 @@ const Index = () => {
                     </div>
                     <div className='flex flex-col justify-start items-start text-slate-600'>
                         <h2 className='text-3xl font-bold'>{cancelledOrder}</h2>
-                        <span>Cancelled Orders</span>
+                        <span>Ordenes Canceladas</span>
                     </div>
                 </div>
             </div>
             <div className='bg-white p-4 mt-5 rounded-md'>
-                <h2 className='text-lg font-semibold text-slate-600'>Recent Orders</h2>
+                <h2 className='text-lg font-semibold text-slate-600'>Ordenes Recientes</h2>
                 <div className='pt-4'>
                     <div className='relative overflow-x-auto'>
                         <table className='w-full text-sm text-left text-gray-500'>
                             <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
                                 <tr>
-                                    <th scope='col' className='px-6 py-3'>Order Id</th>
-                                    <th scope='col' className='px-6 py-3'>Price</th>
-                                    <th scope='col' className='px-6 py-3'>Payment status</th>
-                                    <th scope='col' className='px-6 py-3'>Order status</th>
-                                    <th scope='col' className='px-6 py-3'>Action</th>
+                                    <th scope='col' className='px-6 py-3'>ID</th>
+                                    <th scope='col' className='px-6 py-3'>Precio</th>
+                                    <th scope='col' className='px-6 py-3'>Estado de Pago</th>
+                                    <th scope='col' className='px-6 py-3'>Estado de la Orden</th>
+                                    <th scope='col' className='px-6 py-3'>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>

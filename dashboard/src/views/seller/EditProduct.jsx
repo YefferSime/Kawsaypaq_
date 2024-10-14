@@ -110,27 +110,27 @@ const EditProduct = () => {
     }
     return (
         <div className='px-2 lg:px-7 pt-5 '>
-            <div className='w-full p-4  bg-[#283046] rounded-md'>
+            <div className='w-full p-4  bg-[#1C1C1C] rounded-md'>
                 <div className='flex justify-between items-center pb-4'>
-                    <h1 className='text-[#d0d2d6] text-xl font-semibold'>Edit Product</h1>
-                    <Link className='bg-blue-500 hover:shadow-blue-500/50 hover:shadow-lg text-white rounded-sm px-7 py-2 my-2 ' to='/seller/dashboard/products'>Products</Link>
+                    <h1 className='text-[#d0d2d6] text-xl font-semibold'>Editar Producto</h1>
+                    <Link className='bg-blue-500 hover:shadow-blue-500/50 hover:shadow-lg text-white rounded-sm px-7 py-2 my-2 ' to='/seller/dashboard/products'>Productos</Link>
                 </div>
                 <div>
                     <form onSubmit={update}>
                         <div className='flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]'>
                             <div className='flex flex-col w-full gap-1'>
-                                <label htmlFor="name">Product name</label>
-                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.name} type="text" placeholder='product name' name='name' id='name' />
+                                <label htmlFor="name">Nombre del Producto</label>
+                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#1C1C1C] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.name} type="text" placeholder='product name' name='name' id='name' />
                             </div>
                             <div className='flex flex-col w-full gap-1'>
-                                <label htmlFor="brand">Product brand</label>
-                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.brand} type="text" placeholder='product brand' name='brand' id='brand' />
+                                <label htmlFor="brand">Producto brand</label>
+                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#1C1C1C] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.brand} type="text" placeholder='product brand' name='brand' id='brand' />
                             </div>
                         </div>
                         <div className='flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]'>
                             <div className='flex flex-col w-full gap-1 relative'>
-                                <label htmlFor="category">Category</label>
-                                <input readOnly onClick={() => setCateShow(!cateShow)} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={category} type="text" placeholder='--select category--' id='category' />
+                                <label htmlFor="category">Categoria</label>
+                                <input readOnly onClick={() => setCateShow(!cateShow)} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#1C1C1C] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={category} type="text" placeholder='--select category--' id='category' />
                                 <div className={`absolute top-[101%] bg-slate-800 w-full transition-all ${cateShow ? 'scale-100' : 'scale-0'}`}>
                                     <div className='w-full px-4 py-2 fixed'>
                                         <input value={searchValue} onChange={categorySearch} className='px-3 py-1 w-full focus:border-indigo-500 outline-none bg-transparent border border-slate-700 rounded-md text-[#d0d2d6] overflow-hidden' type="text" placeholder='search' />
@@ -150,23 +150,23 @@ const EditProduct = () => {
                             </div>
                             <div className='flex flex-col w-full gap-1'>
                                 <label htmlFor="stock">Stock</label>
-                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.stock} type="number" min='0' placeholder='product stock' name='stock' id='stock' />
+                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#1C1C1C] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.stock} type="number" min='0' placeholder='product stock' name='stock' id='stock' />
                             </div>
                         </div>
 
                         <div className='flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]'>
                             <div className='flex flex-col w-full gap-1'>
-                                <label htmlFor="price">Price</label>
-                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.price} type="number" placeholder='price' name='price' id='price' />
+                                <label htmlFor="price">Precio</label>
+                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#1C1C1C] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.price} type="number" placeholder='price' name='price' id='price' />
                             </div>
                             <div className='flex flex-col w-full gap-1'>
-                                <label htmlFor="discount">Discount</label>
-                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.discount} type="number" placeholder='%discount%' name='discount' id='discount' />
+                                <label htmlFor="discount">Descuento</label>
+                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#1C1C1C] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.discount} type="number" placeholder='%discount%' name='discount' id='discount' />
                             </div>
                         </div>
                         <div className='flex flex-col w-full gap-1 text-[#d0d2d6] mb-5'>
-                            <label htmlFor="description">Description</label>
-                            <textarea rows={4} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.description} placeholder='description' name='description' id='description'></textarea>
+                            <label htmlFor="description">Descripción</label>
+                            <textarea rows={4} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#1C1C1C] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.description} placeholder='description' name='description' id='description'></textarea>
                         </div>
                         <div className='grid lg:grid-cols-4 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 sm:gap-4 md:gap-4 xs:gap-4 gap-3 w-full text-[#d0d2d6] mb-4'>
                             {
@@ -181,7 +181,7 @@ const EditProduct = () => {
                         <div className='flex'>
                             <button disabled={loader ? true : false} className='bg-blue-500 w-[190px] hover:shadow-blue-500/20 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3'>
                                 {
-                                    loader ? <PropagateLoader color='#fff' cssOverride={overrideStyle} /> : 'Update product'
+                                    loader ? <PropagateLoader color='#fff' cssOverride={overrideStyle} /> : 'Actualizar'
                                 }
                             </button>
                         </div>
