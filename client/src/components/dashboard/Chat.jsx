@@ -12,9 +12,7 @@ import toast from 'react-hot-toast'
 const socket = io('http://localhost:5000')
 
 const Chat = () => {
-
     const scrollRef = useRef()
-
     const dispatch = useDispatch()
     const { sellerId } = useParams()
     const [text, setText] = useState('')
@@ -99,7 +97,7 @@ const Chat = () => {
                                     }
                                     <img src="http://localhost:3000/images/user.png" alt="" />
                                 </div>
-                                <span>{f.name}</span>
+                                <span>{f.name}yeffer</span>
                             </Link>)
                         }
                     </div>

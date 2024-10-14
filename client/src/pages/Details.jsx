@@ -303,7 +303,9 @@ const Details = () => {
                                             return (
                                                 <Link className='block'>
                                                     <div className='relative h-[270px]'>
-                                                        <img className='w-full h-full' src={p.images[0]} />
+                                                        
+                                                        <img className='w-full h-full' src={`${baseURL}/${p.images[0]}`} />
+
                                                         {
                                                             p.discount !== 0 && <div className='flex justify-center items-center absolute text-white w-[38px] h-[38px] rounded-full bg-red-500 font-semibold text-xs left-2 top-2'>{p.discount}%</div>
                                                         }

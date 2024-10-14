@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { get_card_products, delete_card_product, messageClear, quantity_inc, quantity_dec } from '../store/reducers/cardReducer'
 
 const Card = () => {
-
+    const baseURL = "http://localhost:5000";
     const dispatch = useDispatch()
     const navegate = useNavigate()
     const { userInfo } = useSelector(state => state.auth)
@@ -52,7 +52,7 @@ const Card = () => {
         }
     }
 
-    console.log(card_products.length)
+   
     return (
         <div>
             <Headers />
@@ -89,7 +89,7 @@ const Card = () => {
                                                     p.products.map((pt, i) => <div className='w-full flex flex-wrap'>
                                                         <div className='flex sm:w-full gap-2 w-7/12'>
                                                             <div className='flex gap-2 justify-start items-center'>
-                                                                <img className='w-[80px] h-[80px]' src={pt.productInfo.images[0]} alt="product image" />
+                                                                <img className='w-[80px] h-[80px]' src={`${baseURL}/${pt.productInfo.images[0]}`} alt="product image" />
                                                                 <div className='pr-4 text-slate-600'>
                                                                     <h2 className='text-md'>{pt.productInfo.name}</h2>
                                                                     <span className='text-sm'>Brand : {pt.productInfo.brand}</span>
@@ -126,6 +126,7 @@ const Card = () => {
                                                             <div className='flex sm:w-full gap-2 w-7/12'>
                                                                 <div className='flex gap-2 justify-start items-center'>
                                                                     <img className='w-[80px] h-[80px]' src={p.products[0].images[0]} alt="product image" />
+                                                                 
                                                                     <div className='pr-4 text-slate-600'>
                                                                         <h2 className='text-md'>{p.products[0].name}</h2>
                                                                         <span className='text-sm'>Brand : {p.products[0].brand}</span>

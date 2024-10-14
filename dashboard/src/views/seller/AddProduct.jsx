@@ -100,7 +100,7 @@ const AddProduct = () => {
         formData.append('stock', state.stock)
         formData.append('category', category)
         formData.append('discount', state.discount)
-        formData.append('shopName', userInfo.shopInfo.shopName);
+        formData.append('shopName', userInfo?.shopInfo?.shopName);
         formData.append('brand', state.brand)
         for (let i = 0; i < images.length; i++) {
             formData.append('images', images[i])
