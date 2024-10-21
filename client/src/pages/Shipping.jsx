@@ -53,11 +53,8 @@ const Shipping = () => {
                 <div className='absolute left-0 top-0 w-full h-full bg-[#2422228a]'>
                     <div className='w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
                         <div className='flex flex-col justify-center gap-1 items-center h-full w-full text-white'>
-                            <h2 className='text-3xl font-bold'>Shop.my</h2>
+                            <h2 className='text-3xl font-bold'>Comprar Producto</h2>
                             <div className='flex justify-center items-center gap-2 text-2xl w-full'>
-                                <Link to='/'>Home</Link>
-                                <span className='pt-2'><MdOutlineKeyboardArrowRight /></span>
-                                <span>Place Order</span>
                             </div>
                         </div>
                     </div>
@@ -71,45 +68,45 @@ const Shipping = () => {
                                 <div className="bg-white p-6 shadow-sm rounded-md">
                                     {
                                         !res && <>
-                                            <h2 className='text-slate-600 font-bold pb-3'>Shipping Information</h2>
+                                            <h2 className='text-slate-600 font-bold pb-3'>Información de pago</h2>
                                             <form onSubmit={save}>
                                                 <div className='flex md:flex-col md:gap-2 w-full gap-5 text-slate-600'>
                                                     <div className='flex flex-col gap-1 mb-2 w-full'>
-                                                        <label htmlFor="name">Name</label>
-                                                        <input onChange={inputHandle} value={state.name} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='name' placeholder='name' id='name' />
+                                                        <label htmlFor="name">Nombre</label>
+                                                        <input onChange={inputHandle} value={state.name} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='name' placeholder='Tu nombre' id='name' />
                                                     </div>
                                                     <div className='flex flex-col gap-1 mb-2 w-full'>
-                                                        <label htmlFor="address">Address</label>
-                                                        <input onChange={inputHandle} value={state.address} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='address' placeholder='House no / building / strreet /area' id='address' />
-                                                    </div>
-                                                </div>
-                                                <div className='flex md:flex-col md:gap-2 w-full gap-5 text-slate-600'>
-                                                    <div className='flex flex-col gap-1 mb-2 w-full'>
-                                                        <label htmlFor="phone">Phone</label>
-                                                        <input onChange={inputHandle} value={state.phone} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='phone' placeholder='phone' id='phone' />
-                                                    </div>
-                                                    <div className='flex flex-col gap-1 mb-2 w-full'>
-                                                        <label htmlFor="post">Post</label>
-                                                        <input onChange={inputHandle} value={state.post} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='post' placeholder='post' id='post' />
+                                                        <label htmlFor="address">Dirección</label>
+                                                        <input onChange={inputHandle} value={state.address} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='address' placeholder='N° de casa/Construcción/Distrito/Área' id='address' />
                                                     </div>
                                                 </div>
                                                 <div className='flex md:flex-col md:gap-2 w-full gap-5 text-slate-600'>
                                                     <div className='flex flex-col gap-1 mb-2 w-full'>
-                                                        <label htmlFor="province">Province</label>
-                                                        <input onChange={inputHandle} value={state.province} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='province' placeholder='province' id='province' />
+                                                        <label htmlFor="phone">Telefono</label>
+                                                        <input onChange={inputHandle} value={state.phone} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='phone' placeholder='Tu telefono o celular' id='phone' />
                                                     </div>
                                                     <div className='flex flex-col gap-1 mb-2 w-full'>
-                                                        <label htmlFor="city">City</label>
-                                                        <input onChange={inputHandle} value={state.city} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='city' placeholder='city' id='city' />
+                                                        <label htmlFor="post">Codigo Postal</label>
+                                                        <input onChange={inputHandle} value={state.post} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='post' placeholder='Tu codigo postal' id='post' />
                                                     </div>
                                                 </div>
                                                 <div className='flex md:flex-col md:gap-2 w-full gap-5 text-slate-600'>
                                                     <div className='flex flex-col gap-1 mb-2 w-full'>
-                                                        <label htmlFor="area">Area</label>
-                                                        <input onChange={inputHandle} value={state.area} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='area' placeholder='area' id='province' />
+                                                        <label htmlFor="province">Provincia</label>
+                                                        <input onChange={inputHandle} value={state.province} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='province' placeholder='Tu provincia' id='province' />
+                                                    </div>
+                                                    <div className='flex flex-col gap-1 mb-2 w-full'>
+                                                        <label htmlFor="city">Ciudad</label>
+                                                        <input onChange={inputHandle} value={state.city} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='city' placeholder='Tu ciudad' id='city' />
+                                                    </div>
+                                                </div>
+                                                <div className='flex md:flex-col md:gap-2 w-full gap-5 text-slate-600'>
+                                                    <div className='flex flex-col gap-1 mb-2 w-full'>
+                                                        <label htmlFor="area">Área</label>
+                                                        <input onChange={inputHandle} value={state.area} type="text" className='w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md' name='area' placeholder='Tu área' id='province' />
                                                     </div>
                                                     <div className='flex flex-col gap-1 mt-3 w-full'>
-                                                        <button className='px-3 py-[6px] rounded-sm hover:shadow-indigo-500/20 hover:shadow-lg bg-indigo-500 text-white'>Save</button>
+                                                        <button className='px-3 py-[6px] rounded-sm hover:shadow-indigo-500/20 hover:shadow-lg bg-indigo-500 text-white'>Guardar</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -159,24 +156,24 @@ const Shipping = () => {
                         <div className='w-[33%] md-lg:w-full'>
                             <div className="pl-3 md-lg:pl-0">
                                 <div className='bg-white font-medium p-5 text-slate-600 flex flex-col gap-3'>
-                                    <h2 className='text-xl font-semibold'>Order Summary</h2>
+                                    <h2 className='text-xl font-semibold'>Resumen del pedido</h2>
                                     <div className='flex justify-between items-center'>
-                                        <span>Items Total({price})</span>
+                                        <span>Total de productos({price})</span>
                                         <span>${price}</span>
                                     </div>
                                     <div className='flex justify-between items-center'>
-                                        <span>Delivery Fee</span>
+                                        <span>Gastos de envio</span>
                                         <span>${shipping_fee}</span>
                                     </div>
                                     <div className='flex justify-between items-center'>
-                                        <span>Total Payment</span>
+                                        <span>Pago total</span>
                                         <span>${price + shipping_fee}</span>
                                     </div>
                                     <div className='flex justify-between items-center'>
                                         <span>Total</span>
                                         <span>${price + shipping_fee}</span>
                                     </div>
-                                    <button onClick={placeOrder} disabled={res ? false : true} className={`px-5 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg ${res ? 'bg-orange-500' : 'bg-orange-300'} text-sm text-white uppercase`}>Place Order</button>
+                                    <button onClick={placeOrder} disabled={res ? false : true} className={`px-5 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg ${res ? 'bg-orange-500' : 'bg-orange-300'} text-sm text-white uppercase`}>Realizar pedido</button>
                                 </div>
                             </div>
                         </div>

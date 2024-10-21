@@ -60,11 +60,8 @@ const Card = () => {
                 <div className='absolute left-0 top-0 w-full h-full bg-[#2422228a]'>
                     <div className='w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
                         <div className='flex flex-col justify-center gap-1 items-center h-full w-full text-white'>
-                            <h2 className='text-3xl font-bold'>Shop.my</h2>
+                            <h2 className='text-3xl font-bold'>Carrito de Compras</h2>
                             <div className='flex justify-center items-center gap-2 text-2xl w-full'>
-                                <Link to='/'>Home</Link>
-                                <span className='pt-2'><MdOutlineKeyboardArrowRight /></span>
-                                <span>Card</span>
                             </div>
                         </div>
                     </div>
@@ -78,7 +75,7 @@ const Card = () => {
                                 <div className='pr-3 md-lg:pr-0'>
                                     <div className='flex flex-col gap-3'>
                                         <div className='bg-white p-4'>
-                                            <h2 className='text-md text-green-500 font-semibold'>Stock Products {card_products.length}</h2>
+                                            <h2 className='text-md text-green-500 font-semibold'>Productos agregados al carrito: {card_products.length}</h2>
                                         </div>
                                         {
                                             card_products.map((p, i) => <div className='flex bg-white p-4 flex-col gap-2'>
@@ -108,7 +105,7 @@ const Card = () => {
                                                                     <div className='px-3'>{pt.quantity}</div>
                                                                     <div onClick={() => inc(pt.quantity, pt.productInfo.stock, pt._id)} className='px-3 cursor-pointer'>+</div>
                                                                 </div>
-                                                                <button onClick={() => dispatch(delete_card_product(pt._id))} className='px-5 py-[3px] bg-red-500 text-white'>Delete</button>
+                                                                <button onClick={() => dispatch(delete_card_product(pt._id))} className='px-5 py-[3px] bg-red-500 text-white'>Borrar</button>
                                                             </div>
                                                         </div>
                                                     </div>)
@@ -160,30 +157,30 @@ const Card = () => {
                                 <div className='pl-3 md-lg:pl-0 md-lg:mt-5'>
                                     {
                                         card_products.length > 0 && <div className='bg-white p-3 text-slate-600 flex flex-col gap-3'>
-                                            <h2 className='text-xl font-bold'>Order Summary</h2>
+                                            <h2 className='text-xl font-bold'>Resumen del pedido</h2>
                                             <div className='flex justify-between items-center'>
-                                                <span>{buy_product_item} Item</span>
+                                                <span>{buy_product_item} Producto</span>
                                                 <span>${price}</span>
                                             </div>
                                             <div className='flex justify-between items-center'>
-                                                <span>Shipping Fee</span>
+                                                <span>Gastos de envio</span>
                                                 <span>${shipping_fee}</span>
                                             </div>
                                             <div className='flex gap-2'>
-                                                <input className='w-full px-3 py-2 border border-slate-200 outline-0 focus:border-green-500 rounded-sm' type="text" placeholder='Input Vauchar Coupon' />
-                                                <button className='px-5 py-[1px] bg-blue-500 text-white rounded-sm uppercase text-sm'>Apply</button>
+                                                <input className='w-full px-3 py-2 border border-slate-200 outline-0 focus:border-green-500 rounded-sm' type="text" placeholder='Introducir su Cupon' />
+                                                <button className='px-5 py-[1px] bg-blue-500 text-white rounded-sm uppercase text-sm'>Aplicar</button>
                                             </div>
                                             <div className='flex justify-between items-center'>
                                                 <span>Total</span>
                                                 <span className='text-lg text-orange-500'>${price + shipping_fee}</span>
                                             </div>
-                                            <button onClick={redirect} className='px-5 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg bg-orange-500 text-sm text-white uppercase'>Proceed to checkout {buy_product_item}</button>
+                                            <button onClick={redirect} className='px-5 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg bg-orange-500 text-sm text-white uppercase'>Comprar: {buy_product_item}</button>
                                         </div>
                                     }
                                 </div>
                             </div>
                         </div> : <div>
-                            <Link className='px-4 py-1 bg-indigo-500 text-white' to='/shops'>Shop Now</Link>
+                            <Link className='px-4 py-1 bg-indigo-500 text-white' to='/shops'>Comprar ahora</Link>
                         </div>
                     }
                 </div>

@@ -47,7 +47,7 @@ const Dashboard = () => {
                             <ul className='py-2 text-slate-600 px-4'>
                                 <li className='flex justify-start items-center gap-2 py-2'>
                                     <span className='text-xl'><RxDashboard /></span>
-                                    <Link to='/dashboard' className='block'>Dashboard</Link>
+                                    <Link to='/dashboard' className='block'>Panel de Control</Link>
                                 </li>
                                 <li className='flex justify-start items-center gap-2 py-2'>
                                     <span className='text-xl'><RiProductHuntLine /></span>
