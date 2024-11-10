@@ -161,27 +161,20 @@ class paymentController {
     }
 
     payment_request_confirm = async (req, res) => {
-        const { paymentId } = req.body
-
+        const { paymentId } = req.body;
+    
         try {
-            const payment = await withdrowRequest.findById(paymentId)
-            const { stripeId } = await striptModel.findOne({
-                sellerId: new ObjectId(payment.sellerId)
-            })
-
-            await stripe.transfers.create({
-                amount: payment.amount * 100,
-                currency: 'usd',
-                destination: stripeId
-            })
-            await withdrowRequest.findByIdAndUpdate(paymentId, { status: 'success' })
-            responseReturn(res, 200, { payment, message: 'request confirm success' })
+            // Actualiza el estado de la solicitud de retiro específica a "success"
+            const payment = await withdrowRequest.findByIdAndUpdate(paymentId, { status: 'success' }, { new: true });
+    
+            // Envía una respuesta de éxito confirmando el cambio de estado
+            responseReturn(res, 200, { payment, message: 'Request updated to success' });
         } catch (error) {
-            console.log(error)
-            responseReturn(res, 500, { message: 'Internal server error' })
+            console.log(error);
+            responseReturn(res, 500, { message: 'Internal server error' });
         }
-
     }
+    
 }
 
 module.exports = new paymentController()

@@ -145,7 +145,7 @@ const Details = () => {
             state: {
                 products: obj,
                 price: price * quantity,
-                shipping_fee: 85,
+                shipping_fee: 1,
                 items: 1
             }
         })
@@ -209,14 +209,14 @@ const Details = () => {
                                 <div className='flex text-xl'>
                                     <Ratings ratings={product.rating} />
                                 </div>
-                                <span className='text-green-500'>(23 reviews)</span>
+                               
                             </div>
                             <div className='text-2xl text-red-500 font-bold flex gap-3'>
                                 {
                                     product.discount !== 0 ? <>
-                                        <h2 className='line-through'>${product.price}</h2>
-                                        <h2>${product.price - Math.floor((product.price * product.discount) / 100)} (-{product.discount}%)</h2>
-                                    </> : <h2>Price : ${product.price}</h2>
+                                        <h2 className='line-through'>S/{product.price}</h2>
+                                        <h2>S/{product.price - Math.floor((product.price * product.discount) / 100)} (-{product.discount}%)</h2>
+                                    </> : <h2>Price : S/{product.price}</h2>
                                 }
                             </div>
                             <div className='text-slate-600'>
@@ -231,7 +231,7 @@ const Details = () => {
                                             <div onClick={inc} className='px-6 cursor-pointer'>+</div>
                                         </div>
                                         <div>
-                                            <button onClick={add_card} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-purple-500/40 bg-purple-500 text-white'>Add To Card</button>
+                                            <button onClick={add_card} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-purple-500/40 bg-purple-500 text-white'>Añadir a Carrito</button>
                                         </div>
                                     </> : ''
                                 }
@@ -243,34 +243,19 @@ const Details = () => {
                             </div>
                             <div className='flex py-5 gap-5'>
                                 <div className='w-[150px] text-black font-bold text-xl flex flex-col gap-5'>
-                                    <span>Availability</span>
-                                    <span>Share on</span>
+                                    <span>Disponible</span>
                                 </div>
                                 <div className='flex flex-col gap-5'>
                                     <span className={`text-${product.stock ? 'green' : 'red'}-500`}>
-                                        {product.stock ? `In Stock(${product.stock})` : 'Out of Stock'}
+                                        {product.stock ? `En Stock(${product.stock})` : 'Out of Stock'}
                                     </span>
-                                    <ul className='flex justify-start items-center gap-3'>
-                                        <li>
-                                            <a className='w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-indigo-500 rounded-full text-white' href="#"><FaFacebookF /></a>
-                                        </li>
-                                        <li>
-                                            <a className='w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-cyan-500 rounded-full text-white' href="#"><AiOutlineTwitter /></a>
-                                        </li>
-                                        <li>
-                                            <a className='w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-purple-500 rounded-full text-white' href="#"><FaLinkedin /></a>
-                                        </li>
-                                        <li>
-                                            <a className='w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-blue-500 rounded-full text-white' href="#"><AiFillGithub /></a>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                             <div className='flex gap-3'>
                                 {
-                                    product.stock ? <button onClick={buy} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-emerald-500/40 bg-emerald-500 text-white'>Buy Now</button> : ""
+                                    product.stock ? <button onClick={buy} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-emerald-500/40 bg-emerald-500 text-white'>Comprar Ahora</button> : ""
                                 }
-                                <Link to={`/dashboard/chat/${product.sellerId}`} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-lime-500/40 bg-lime-500 text-white block'>Chat Seller</Link>
+                                <Link to={`/dashboard/chat/${product.sellerId}`} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-lime-500/40 bg-lime-500 text-white block'>Hablar con el Vendedor</Link>
                             </div>
                         </div>
                     </div>
@@ -282,8 +267,8 @@ const Details = () => {
                         <div className='w-[72%] md-lg:w-full'>
                             <div className='pr-4 md-lg:pr-0'>
                                 <div className='grid grid-cols-2'>
-                                    <button onClick={() => setState('reviews')} className={`py-1 hover:text-white px-5 hover:bg-green-500 ${state === 'reviews' ? 'bg-green-500 text-white' : 'bg-slate-200 text-slate-700'} rounded-sm`}>Reviews</button>
-                                    <button onClick={() => setState('description')} className={`py-1 px-5 hover:text-white hover:bg-green-500 ${state === 'description' ? 'bg-green-500 text-white' : 'bg-slate-200 text-slate-700'} rounded-sm`}>Description</button>
+                                    <button onClick={() => setState('reviews')} className={`py-1 hover:text-white px-5 hover:bg-green-500 ${state === 'reviews' ? 'bg-green-500 text-white' : 'bg-slate-200 text-slate-700'} rounded-sm`}>Opiniones</button>
+                                    <button onClick={() => setState('description')} className={`py-1 px-5 hover:text-white hover:bg-green-500 ${state === 'description' ? 'bg-green-500 text-white' : 'bg-slate-200 text-slate-700'} rounded-sm`}>Descripción</button>
                                 </div>
                                 <div>
                                     {
@@ -295,7 +280,7 @@ const Details = () => {
                         <div className='w-[28%] md-lg:w-full'>
                             <div className='pl-4 md-lg:pl-0'>
                                 <div className='px-3 py-2 text-slate-600 bg-slate-200'>
-                                    <h2> From {product.shopName}</h2>
+                                    <h2> De {product.shopName}</h2>
                                 </div>
                                 <div className='flex flex-col gap-5 mt-3 border p-3'>
                                     {
@@ -312,7 +297,7 @@ const Details = () => {
                                                     </div>
                                                     <h2 className='text-slate-600 py-1'>{p.name}</h2>
                                                     <div className='flex gap-2'>
-                                                        <h2 className='text-[#6699ff] text-lg font-bold'>${p.price}</h2>
+                                                        <h2 className='text-[#6699ff] text-lg font-bold'>S/{p.price}</h2>
                                                         <div className='flex items-center gap-2'>
                                                             <Ratings ratings={p.rating} />
                                                         </div>
@@ -329,7 +314,7 @@ const Details = () => {
             </section>
             <section>
                 <div className='w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
-                    <h2 className='text-2xl py-8 text-slate-600'>Related Products</h2>
+                    <h2 className='text-2xl py-8 text-slate-600'>Productos relacionados</h2>
                     <div>
                         <Swiper
                             slidesPerView='auto'
@@ -357,7 +342,7 @@ const Details = () => {
                                             <Link className='block'>
                                                 <div className='relative h-[270px]'>
                                                     <div className='w-full h-full'>
-                                                        <img className='w-full h-full' src={p.images[0]} />
+                                                        <img className='w-full h-full' src={`${baseURL}/${p.images[0]}`} />
                                                         <div className='absolute h-full w-full top-0 left-0 bg-[#000] opacity-25 hover:opacity-50 transition-all duration-500'></div>
                                                     </div>
                                                     {
@@ -367,7 +352,7 @@ const Details = () => {
                                                 <div className='p-4 flex flex-col gap-1'>
                                                     <h2 className='text-slate-600 text-lg font-semibold'>{p.name}</h2>
                                                     <div className='flex justify-start items-center gap-3'>
-                                                        <h2 className='text-[#6699ff] text-lg font-bold'>${p.price}</h2>
+                                                        <h2 className='text-[#6699ff] text-lg font-bold'>S/{p.price}</h2>
                                                         <div className='flex'>
                                                             <Ratings ratings={p.rating} />
                                                         </div>

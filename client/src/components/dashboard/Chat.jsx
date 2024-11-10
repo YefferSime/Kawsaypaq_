@@ -153,7 +153,7 @@ const Chat = () => {
                                     <input className='hidden' type="file" />
                                 </div>
                                 <div className='border h-[40px] p-0 ml-2 w-[calc(100%-90px)] rounded-full relative'>
-                                    <input value={text} onChange={(e) => setText(e.target.value)} type="text" placeholder='input message' className='w-full rounded-full h-full outline-none p-3' />
+                                    <input value={text} onChange={(e) => setText(e.target.value)} type="text" placeholder='Enviar mensaje' className='w-full rounded-full h-full outline-none p-3' />
                                     <div className='text-2xl right-2 top-2 absolute cursor-auto'>
                                         <span><GrEmoji /></span>
                                     </div>

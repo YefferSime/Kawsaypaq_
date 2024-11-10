@@ -66,7 +66,7 @@ const Reviews = ({ product }) => {
           <div className='flex text-4xl'>
             <Ratings ratings={product.rating} />
           </div>
-          <p className='text-sm text-slate-600'>{totalReview} Reviews</p>
+          <p className='text-sm text-slate-600'>{totalReview} Opiniones</p>
         </div>
         <div className='flex gap-2 flex-col py-4'>
           <div className='flex justify-start items-center gap-5'>
@@ -125,7 +125,7 @@ const Reviews = ({ product }) => {
           </div>
         </div>
       </div>
-      <h2 className='text-slate-600 text-xl font-bold py-5'>Product Reviews {totalReview}</h2>
+      <h2 className='text-slate-600 text-xl font-bold py-5'>Reseñas de productos {totalReview}</h2>
       <div className='flex flex-col gap-8 pb-10 pt-4'>
         {
           reviews.map((r, i) => <div key={i} className='flex flex-col gap-1'>
@@ -159,7 +159,7 @@ const Reviews = ({ product }) => {
             <form onSubmit={review_submit}>
               <textarea value={re} required onChange={(e) => setRe(e.target.value)} className='border outline-0 p-3 w-full' name="" id="" cols="30" rows="5"></textarea>
               <div className='mt-2'>
-                <button className='py-1 px-5 bg-indigo-500 text-white rounded-sm'>Submit</button>
+                <button className='py-1 px-5 bg-indigo-500 text-white rounded-sm'>Enviar</button>
               </div>
             </form>
           </div> : <div>

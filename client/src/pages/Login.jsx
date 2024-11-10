@@ -1,8 +1,8 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Headers from '../components/Headers'
 import Footer from '../components/Footer'
 import { FaFacebookF } from 'react-icons/fa'
-import { Link,useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineGoogle } from 'react-icons/ai'
 import FadeLoader from 'react-spinners/FadeLoader'
 import { useSelector, useDispatch } from 'react-redux'
@@ -40,7 +40,7 @@ const Login = () => {
             toast.error(errorMessage)
             dispatch(messageClear())
         }
-        if(userInfo){
+        if (userInfo) {
             navigate('/')
         }
     }, [successMessage, errorMessage])
@@ -56,7 +56,7 @@ const Login = () => {
             <div className='bg-slate-200 mt-4'>
                 <div className='w-full justify-center items-center p-10'>
                     <div className='grid grid-cols-2 w-[60%] mx-auto bg-white rounded-md'>
-                        <div className='px-8 py-8'>
+                        <div className='px-8 py-8 '>
                             <h2 className='text-center w-full text-xl text-slate-600 font-bold'>Iniciar sesión</h2>
                             <div>
                                 <form onSubmit={login} className='text-slate-600'>

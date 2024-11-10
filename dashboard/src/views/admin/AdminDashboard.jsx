@@ -97,7 +97,7 @@ const AdminDashboard = () => {
             <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7'>
                 <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
                     <div className='flex flex-col justify-start items-start text-[#E0E0E0]'>
-                        <h2 className='text-3xl font-bold'>${totalSale}</h2>
+                        <h2 className='text-3xl font-bold'>S/{totalSale}</h2>
                         <span className='text-md font-medium'>Ventas Totales</span>
                     </div>
                     <div className='w-[46px] h-[47px] rounded-full bg-[#2E7D32] flex justify-center items-center text-xl'>
@@ -191,7 +191,7 @@ const AdminDashboard = () => {
                                     <td className='px-4 py-2'>{i + 1}</td>
                                     <td className='px-4 py-2'>{order.company}</td>
                                     <td className='px-4 py-2'>{order.seller}</td>
-                                    <td className='px-4 py-2'>${order.total}</td>
+                                    <td className='px-4 py-2'>S/{order.price}</td>
                                     <td className='px-4 py-2'>{moment(order.date).format('DD/MM/YYYY')}</td>
                                 </tr>
                             ))}

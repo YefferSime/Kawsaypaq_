@@ -72,7 +72,7 @@ const Shops = () => {
     return (
         <div>
             <Headers />
-            <section className='bg-[url("http://localhost:3000/images/banner/shop.gif")] h-[220px] mt-6 bg-cover bg-no-repeat relative bg-left'>
+            <section className='bg-[url("http://localhost:3000/images/banner/baner.jpg")] h-[220px] mt-6 bg-cover bg-no-repeat relative bg-left'>
                 <div className='absolute left-0 top-0 w-full h-full bg-[#2422228a]'>
                     <div className='w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
                         <div className='flex flex-col justify-center gap-1 items-center h-full w-full text-white'>
@@ -121,7 +121,7 @@ const Shops = () => {
                                     )}
                                 />
                                 <div>
-                                    <span className='text-red-500 font-bold text-lg'>${Math.floor(state.values[0])} - ${Math.floor(state.values[1])}</span>
+                                    <span className='text-red-500 font-bold text-lg'>S/{Math.floor(state.values[0])} - S/{Math.floor(state.values[1])}</span>
                                 </div>
                             </div>
                             <div className='py-3 flex flex-col gap-4'>

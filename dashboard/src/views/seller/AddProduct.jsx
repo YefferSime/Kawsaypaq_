@@ -171,8 +171,8 @@ const AddProduct = () => {
                                 </div>
                             </div>
                             <div className='flex flex-col w-full gap-1'>
-                                <label htmlFor="stock">Stocks</label>
-                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#1C1C1C] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.stock} type="number" min='0' placeholder='Stock' name='stock' id='stock' />
+                                <label htmlFor="stock">Cantidad en Kilos</label>
+                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#1C1C1C] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.stock} type="number" min='0' placeholder='Kilos' name='stock' id='stock' />
                             </div>
                         </div>
 

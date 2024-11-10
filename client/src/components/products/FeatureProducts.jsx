@@ -73,7 +73,7 @@ const FeatureProducts = ({ products }) => {
                         <div className='py-3 text-slate-600 px-2'>
                             <h2>{p.name}</h2>
                             <div className='flex justify-start items-center gap-3'>
-                                <span className='text-lg  font-bold'>${p.price}</span>
+                                <span className='text-lg  font-bold'>S/{p.price}</span>
                                 <div className='flex'>
                                     <Ratings ratings={p.rating} />
                                 </div>

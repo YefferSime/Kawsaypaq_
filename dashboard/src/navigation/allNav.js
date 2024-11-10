@@ -47,13 +47,13 @@ export const allNav = [
         role: 'admin',
         path: '/admin/dashboard/deactive-sellers'
     },
-    {
-        id: 7,
-        title: 'Solicitud de Vendedores',
-        icon: <BiLoaderCircle />,
-        role: 'admin',
-        path: '/admin/dashboard/sellers-request'
-    },
+    //{
+    //    id: 7,
+    //    title: 'Solicitud de Vendedores',
+    //    icon: <BiLoaderCircle />,
+    //    role: 'admin',
+    //    path: '/admin/dashboard/sellers-request'
+    //},
     {
         id: 8,
         title: 'Chat con Vendedores',
@@ -82,21 +82,21 @@ export const allNav = [
         role: 'seller',
         path: '/seller/dashboard/products'
     },
-    {
-        id: 11,
-        title: 'Todos los Banners',
-        icon: <RiProductHuntLine />,
-        role: 'seller',
-        path: '/seller/dashboard/banners'
-    },
+    //{
+    //    id: 11,
+    //    title: 'Todos los Banners',
+    //    icon: <RiProductHuntLine />,
+    //    role: 'seller',
+    //    path: '/seller/dashboard/banners'
+    //},
 
-    {
-        id: 12,
-        title: 'Descuentos',
-        icon: <RiProductHuntLine />,
-        role: 'seller',
-        path: '/seller/dashboard/discount-products'
-    },
+    //{
+    //    id: 12,
+    //    title: 'Descuentos',
+    //    icon: <RiProductHuntLine />,
+    //    role: 'seller',
+    //    path: '/seller/dashboard/discount-products'
+    //},
     {
         id: 13,
         title: 'Ordenes',

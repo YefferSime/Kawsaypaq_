@@ -86,7 +86,7 @@ const Products = () => {
                                 <th scope='col' className='py-3 px-4'>Brand</th>
                                 <th scope='col' className='py-3 px-4'>Precio</th>
                                 <th scope='col' className='py-3 px-4'>Descuento</th>
-                                <th scope='col' className='py-3 px-4'>Stock</th>
+                                <th scope='col' className='py-3 px-4'>Kilos</th>
                                 <th scope='col' className='py-3 px-4'>Acción</th>
                             </tr>
                         </thead>
@@ -107,7 +107,7 @@ const Products = () => {
                                         <span>{d.brand}</span>
                                     </td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        <span>${d.price}</span>
+                                        <span>S/{d.price}</span>
                                     </td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
                                         {

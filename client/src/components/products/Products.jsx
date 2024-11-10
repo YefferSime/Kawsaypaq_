@@ -1,9 +1,10 @@
-import React from 'react'
-import Carousel from 'react-multi-carousel'
-import 'react-multi-carousel/lib/styles.css'
-import {FiChevronRight,FiChevronLeft} from 'react-icons/fi'
-import { Link } from 'react-router-dom'
-const Products = ({ title,products }) => {
+import React from 'react';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+
+const Products = ({ title, products }) => {
     const responsive = {
         superLargeDesktop: {
             breakpoint: { max: 4000, min: 3000 },
@@ -21,24 +22,26 @@ const Products = ({ title,products }) => {
             breakpoint: { max: 464, min: 0 },
             items: 1
         }
-    }
+    };
 
     const baseURL = "http://localhost:5000";
+
     const ButtonGroup = ({ next, previous }) => {
         return (
             <div className='flex justify-between items-center'>
                 <div className='text-xl font-bold text-slate-600'>{title}</div>
                 <div className='flex justify-center items-center gap-3 text-slate-600'>
-                    <button onClick={()=>previous()} className='w-[30px] h-[30px] flex justify-center items-center bg-slate-300 border border-slate-200'>
-                        <span><FiChevronLeft/></span>
+                    <button onClick={() => previous()} className='w-[30px] h-[30px] flex justify-center items-center bg-slate-300 border border-slate-200'>
+                        <span><FiChevronLeft /></span>
                     </button>
-                    <button onClick={()=>next()} className='w-[30px] h-[30px] flex justify-center items-center bg-slate-300 border border-slate-200'>
-                        <span><FiChevronLeft/></span>
+                    <button onClick={() => next()} className='w-[30px] h-[30px] flex justify-center items-center bg-slate-300 border border-slate-200'>
+                        <span><FiChevronRight /></span>
                     </button>
                 </div>
             </div>
-        )
-    }
+        );
+    };
+
     return (
         <div className='flex gap-8 flex-col-reverse'>
             <Carousel
@@ -48,29 +51,28 @@ const Products = ({ title,products }) => {
                 responsive={responsive}
                 transitionDuration={500}
                 renderButtonGroupOutside={true}
-                customButtonGroup={<ButtonGroup/>}
-
+                customButtonGroup={<ButtonGroup />}
             >
                 {
-                    products.map((p, i) => {
-                        return (
-                            <div key={i} className='flex flex-col justify-start gap-2'>
-                                {
-                                    p.map((pl,j) => <Link key={j} className='flex justify-start items-start' to='#'>
-                                        <img className='w-[110px] h-[110px]' src={`${baseURL}/${pl.images[0]}`} alt="images" />
+                    products.map((p, i) => (
+                        <div key={i} className='flex flex-col justify-start gap-2'>
+                            {
+                                p.map((pl, j) => (
+                                    <Link key={j} className='flex justify-start items-start' to={`/product/details/${pl.slug}`}>
+                                        <img className='w-[110px] h-[110px]' src={`${baseURL}/${pl.images[0]}`} alt="product" />
                                         <div className='px-3 flex justify-start items-start gap-1 flex-col text-slate-600'>
                                             <h2>{pl.name}</h2>
-                                            <span className='text-lg font-bold'>${pl.price}</span>
+                                            <span className='text-lg font-bold'>S/{pl.price}</span>
                                         </div>
-                                    </Link>)
-                                }
-                            </div>
-                        )
-                    })
+                                    </Link>
+                                ))
+                            }
+                        </div>
+                    ))
                 }
             </Carousel>
         </div>
-    )
-}
+    );
+};
 
-export default Products
+export default Products;

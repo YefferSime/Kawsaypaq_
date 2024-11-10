@@ -46,6 +46,7 @@ export const confirm_payment_request = createAsyncThunk(
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
+            console.log("hjashd")
         }
     }
 )
@@ -73,22 +74,43 @@ export const PaymentReducer = createSlice({
         }
     },
     extraReducers: {
-
-        [get_seller_payemt_details.fulfilled]: (state, { payload }) => {
-            state.pendingWithdrows = payload.pendingWithdrows
-            state.successWithdrows = payload.successWithdrows
-            state.totalAmount = payload.totalAmount
-            state.availableAmount = payload.availableAmount
-            state.withdrowAmount = payload.withdrowAmount
-            state.pendingAmount = payload.pendingAmount
+        // Maneja el éxito de la acción para obtener solicitudes de retiro pendientes
+        [get_payment_request.fulfilled]: (state, { payload }) => {
+            state.pendingWithdrows = payload.withdrowalRequest
         },
-        [send_withdrowal_request.pending]: (state, _) => {
+    
+        // Activa el loader cuando la solicitud de confirmación de pago está en proceso
+        [confirm_payment_request.pending]: (state) => {
             state.loader = true
         },
+    
+        // Maneja el rechazo de la solicitud de confirmación de pago
+        [confirm_payment_request.rejected]: (state, { payload }) => {
+            state.loader = false
+            state.errorMessage = payload.message
+        },
+    
+        // Maneja el éxito de la solicitud de confirmación de pago
+        [confirm_payment_request.fulfilled]: (state, { payload }) => {
+            // Filtra la solicitud confirmada fuera de la lista `pendingWithdrows`
+            const temp = state.pendingWithdrows.filter(r => r._id !== payload.payment._id)
+            state.loader = false
+            state.successMessage = payload.message
+            state.pendingWithdrows = temp
+        },
+    
+        // Activa el loader al enviar una solicitud de retiro
+        [send_withdrowal_request.pending]: (state) => {
+            state.loader = true
+        },
+    
+        // Maneja el rechazo al enviar una solicitud de retiro
         [send_withdrowal_request.rejected]: (state, { payload }) => {
             state.loader = false
             state.errorMessage = payload.message
         },
+    
+        // Maneja el éxito al enviar una solicitud de retiro
         [send_withdrowal_request.fulfilled]: (state, { payload }) => {
             state.loader = false
             state.successMessage = payload.message
@@ -96,26 +118,18 @@ export const PaymentReducer = createSlice({
             state.availableAmount = state.availableAmount - payload.withdrowal.amount
             state.pendingAmount = payload.withdrowal.amount
         },
-        [get_payment_request.fulfilled]: (state, { payload }) => {
-
-            state.pendingWithdrows = payload.withdrowalRequest
-        },
-
-        [confirm_payment_request.pending]: (state, _) => {
-            state.loader = true
-        },
-        [confirm_payment_request.rejected]: (state, { payload }) => {
-            state.loader = false
-            state.errorMessage = payload.message
-        },
-        [confirm_payment_request.fulfilled]: (state, { payload }) => {
-            const temp = state.pendingWithdrows.filter(r=>r._id !== payload.payment._id)
-            state.loader = false
-            state.successMessage = payload.message
-            state.pendingWithdrows = temp
+    
+        // Maneja el éxito de obtener los detalles de pago del vendedor
+        [get_seller_payemt_details.fulfilled]: (state, { payload }) => {
+            state.pendingWithdrows = payload.pendingWithdrows
+            state.successWithdrows = payload.successWithdrows
+            state.totalAmount = payload.totalAmount
+            state.availableAmount = payload.availableAmount
+            state.withdrowAmount = payload.withdrowAmount
+            state.pendingAmount = payload.pendingAmount
         }
-
     }
+    
 
 })
 export const { messageClear } = PaymentReducer.actions
