@@ -101,11 +101,11 @@ const Category = () => {
             </div>
             <div className='flex flex-wrap w-full'>
                 <div className='w-full lg:w-7/12'>
-                    <div className='w-full p-4  bg-[#1C1C1C] rounded-md'>
+                    <div className='w-full p-4  bg-[#FFFFFF] rounded-md'>
                         <Search setParPage={setParPage} setSearchValue={setSearchValue} searchValue={searchValue} />
                         <div className='relative overflow-x-auto'>
-                            <table className='w-full text-sm text-left text-[#d0d2d6]'>
-                                <thead className='text-sm text-[#d0d2d6] uppercase border-b border-slate-700'>
+                            <table className='w-full text-sm text-left text-[#000000]'>
+                                <thead className='text-sm text-[#000000] uppercase border-b border-slate-700'>
                                     <tr>
                                         <th scope='col' className='py-3 px-4'>N°</th>
                                         <th scope='col' className='py-3 px-4'>Imagen</th>
@@ -149,7 +149,7 @@ const Category = () => {
                 </div>
                 <div className={`w-[320px] lg:w-5/12 translate-x-100 lg:relative lg:right-0 fixed ${show ? 'right-0' : '-right-[340px]'} z-[9999] top-0 transition-all duration-500`}>
                     <div className='w-full pl-5'>
-                        <div className='bg-[#1C1C1C] h-screen lg:h-auto px-3 py-2 lg:rounded-md text-[#d0d2d6]'>
+                        <div className='bg-[#FFFFFF] h-screen lg:h-auto px-3 py-2 lg:rounded-md text-[#000000]'>
                             <div className='flex justify-between items-center mb-4'>
                                 <h1 className='text-[#d0d2d6] font-semibold text-xl'>Agregar Categoria</h1>
                                 <div onClick={() => setShow(false)} className='block lg:hidden cursor-pointer'><GrClose className='text-[#d0d2d6]' /></div>
@@ -161,7 +161,7 @@ const Category = () => {
                                 </div>
                                 <div>
 
-                                    <label className='flex justify-center items-center flex-col h-[238px] cursor-pointer border border-dashed hover:border-indigo-500 w-full border-[#d0d2d6]' htmlFor="image">
+                                    <label className='flex justify-center items-center flex-col h-[180px] cursor-pointer border border-dashed border-black hover:border-indigo-500 w-full text-[#000000]' htmlFor="image">
                                         {
                                             imageShow ? <img className='w-full h-full' src={imageShow} /> : <>
                                                 <span><BsImage /></span>
@@ -173,7 +173,7 @@ const Category = () => {
                                 </div>
                                 <input onChange={imageHandle} className='hidden' type="file" name='image' id='image' required />
                                 <div className='mt-4'>
-                                    <button disabled={loader ? true : false} className='bg-blue-500 w-full hover:shadow-blue-500/20 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3'>
+                                    <button disabled={loader ? true : false} className='bg-green-500 w-full hover:shadow-blue-500/20 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3'>
                                         {
                                             loader ? <PropagateLoader color='#fff' cssOverride={overrideStyle} /> : 'Agregar Categoria'
                                         }

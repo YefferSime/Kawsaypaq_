@@ -51,7 +51,7 @@ const AdminDashboard = () => {
             },
             chart: {
                 background: 'transparent',
-                foreColor: '#E0E0E0'
+                foreColor: '#000000'
             },
             dataLabels: {
                 enabled: false
@@ -95,8 +95,8 @@ const AdminDashboard = () => {
     return (
         <div className='px-2 md:px-7 py-5'>
             <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7'>
-                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
-                    <div className='flex flex-col justify-start items-start text-[#E0E0E0]'>
+                <div className='flex justify-between items-center p-5 bg-[#FFFFFF] rounded-md gap-3'>
+                    <div className='flex flex-col justify-start items-start text-[#000000]'>
                         <h2 className='text-3xl font-bold'>S/{totalSale}</h2>
                         <span className='text-md font-medium'>Ventas Totales</span>
                     </div>
@@ -104,8 +104,8 @@ const AdminDashboard = () => {
                         <BsCurrencyDollar className='text-white shadow-lg' />
                     </div>
                 </div>
-                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
-                    <div className='flex flex-col justify-start items-start text-[#E0E0E0]'>
+                <div className='flex justify-between items-center p-5 bg-[#FFFFFF] rounded-md gap-3'>
+                    <div className='flex flex-col justify-start items-start text-[#000000]'>
                         <h2 className='text-3xl font-bold'>{totalProduct}</h2>
                         <span className='text-md font-medium'>Productos</span>
                     </div>
@@ -113,8 +113,8 @@ const AdminDashboard = () => {
                         <RiProductHuntLine className='text-white shadow-lg' />
                     </div>
                 </div>
-                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
-                    <div className='flex flex-col justify-start items-start text-[#E0E0E0]'>
+                <div className='flex justify-between items-center p-5 bg-[#FFFFFF] rounded-md gap-3'>
+                    <div className='flex flex-col justify-start items-start text-[#000000]'>
                         <h2 className='text-3xl font-bold'>{totalSeller}</h2>
                         <span className='text-md font-medium'>Vendedores</span>
                     </div>
@@ -122,8 +122,8 @@ const AdminDashboard = () => {
                         <FaUsers className='text-white shadow-lg' />
                     </div>
                 </div>
-                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
-                    <div className='flex flex-col justify-start items-start text-[#E0E0E0]'>
+                <div className='flex justify-between items-center p-5 bg-[#FFFFFF] rounded-md gap-3'>
+                    <div className='flex flex-col justify-start items-start text-[#000000]'>
                         <h2 className='text-3xl font-bold'>{totalOrder}</h2>
                         <span className='text-md font-medium'>Ordenes</span>
                     </div>
@@ -135,14 +135,14 @@ const AdminDashboard = () => {
 
             <div className='w-full flex flex-wrap mt-7'>
                 <div className='w-full lg:w-7/12 lg:pr-3'>
-                    <div className='w-full bg-[#1C1C1C] p-4 rounded-md'>
+                    <div className='w-full bg-[#FFFFFF] p-4 rounded-md'>
                         <Chart options={state.options} series={state.series} type='bar' height={350} />
                     </div>
                 </div>
                 <div className='w-full lg:w-5/12 lg:pl-4 mt-6 lg:mt-0'>
-                    <div className='w-full bg-[#1C1C1C] p-4 rounded-md text-[#E0E0E0]'>
+                    <div className='w-full bg-[#FFFFFF] p-4 rounded-md text-[#E0E0E0]'>
                         <div className='flex justify-between items-center'>
-                            <h2 className='font-semibold text-lg text-[#E0E0E0] pb-3'>Mensaje de vendedor más reciente</h2>
+                            <h2 className='font-semibold text-lg text-[#000000] pb-3'>Mensaje de vendedor más reciente</h2>
                             <Link className='font-semibold text-sm text-[#66BB6A]'>Ver todo</Link>
                         </div>
                         <div className='flex flex-col gap-2 pt-6 text-[#E0E0E0]'>
@@ -169,14 +169,14 @@ const AdminDashboard = () => {
                 </div>
             </div>
 
-            <div className='w-full p-4 bg-[#1C1C1C] rounded-md mt-6'>
+            <div className='w-full p-4 bg-[#FFFFFF] rounded-md mt-6'>
                 <div className='flex justify-between items-center'>
-                    <h2 className='font-semibold text-lg text-[#E0E0E0] pb-3'>Ordenes recientes</h2>
+                    <h2 className='font-semibold text-lg text-[#000000] pb-3'>Ordenes recientes</h2>
                     <Link className='font-semibold text-sm text-[#66BB6A]'>Ver todo</Link>
                 </div>
                 <div className='relative overflow-x-auto'>
-                    <table className='w-full text-sm text-left text-[#E0E0E0]'>
-                        <thead className='text-sm text-[#E0E0E0] uppercase border-b border-slate-700'>
+                    <table className='w-full text-sm text-left text-[#000000]'>
+                        <thead className='text-sm text-[#000000] uppercase border-b border-slate-700'>
                             <tr>
                                 <th scope='col' className='px-4 py-3'>No</th>
                                 <th scope='col' className='px-4 py-3'>Compañía</th>
