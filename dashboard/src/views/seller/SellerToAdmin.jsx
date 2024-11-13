@@ -43,8 +43,8 @@ const SellerToAdmin = () => {
     }, [seller_admin_message])
 
     return (
-        <div className='px-2 lg:px-7 py-5'>
-            <div className='w-full bg-[#1C1C1C] px-4 py-4 rounded-md h-[calc(100vh-140px)]'>
+        <div className='px-2 lg:px-7 pt-5 bg-[#006400] min-h-screen'>
+            <div className='w-full bg-[#ffffff] px-4 py-4 rounded-md h-[calc(100vh-140px)]'>
                 <div className='flex w-full h-full relative'>
 
                     <div className='w-full md:pl-4'>
@@ -57,11 +57,11 @@ const SellerToAdmin = () => {
                                     }
 
                                 </div>
-                                <h2 className='text-base text-white font-semibold'>Soporte de Tecnico</h2>
+                                <h2 className='text-base text-black font-semibold'>Soporte Tecnico</h2>
                             </div>
                         </div>
                         <div className='py-4'>
-                            <div className='bg-slate-800 h-[calc(100vh-290px)] rounded-md p-3 overflow-y-auto'>
+                            <div className='bg-[#84E08C] h-[calc(100vh-290px)] rounded-md p-3 overflow-y-auto'>
                                 {
                                     seller_admin_message.map((m, i) => {
                                         if (userInfo._id !== m.senderId) {
@@ -97,7 +97,7 @@ const SellerToAdmin = () => {
                         </div>
                         <form onSubmit={send} className='flex gap-3'>
                             <input value={text} onChange={(e) => setText(e.target.value)} className='w-full flex justify-between px-2 border border-slate-700 items-center py-[5px] focus:border-blue-500 rounded-md outline-none bg-transparent text-[#d0d2d6]' type="text" placeholder='Enviar un mensaje' />
-                            <button className='shadow-lg bg-cyan-500 hover:shadow-cyan-500/50 text-semibold w-[75px] h-[35px] rounded-md text-white flex justify-center items-center'>Enviar</button>
+                            <button className='shadow-lg bg-[#6EE15E] hover:shadow-[#6EE15E]/50 text-semibold w-[75px] h-[35px] rounded-md text-white flex justify-center items-center'>Enviar</button>
                         </form>
                     </div>
                 </div>

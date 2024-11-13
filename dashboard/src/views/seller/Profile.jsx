@@ -45,10 +45,10 @@ const Profile = () => {
         })
     }
     return (
-        <div className='px-2 lg:px-7 py-5'>
+        <div className='px-2 lg:px-7 py-5 bg-[#006400]'>
             <div className='w-full flex flex-wrap'>
                 <div className='w-full md:w-6/12'>
-                    <div className='w-full p-4  bg-[#1C1C1C] rounded-md text-[#d0d2d6]'>
+                    <div className='w-full p-4  bg-[#FFFFFF] rounded-md text-[#d0d2d6]'>
                         <div className='flex justify-center items-center py-3'>
                             {
                                 userInfo?.image ? <label htmlFor="img" className='h-[210px] w-[300px] relative p-3 cursor-pointer overflow-hidden'>
@@ -154,12 +154,12 @@ const Profile = () => {
                 </div>
                 <div className='w-full md:w-6/12'>
                     <div className='w-full pl-0 md:pl-7 mt-6 md:mt-0  '>
-                        <div className='bg-[#1C1C1C] rounded-md text-[#d0d2d6] p-4'>
-                            <h1 className='text-[#d0d2d6] text-lg mb-3 font-semibold'>Cambiar Contraseña</h1>
+                        <div className='bg-[#ffffff] rounded-md text-[#000000] p-4'>
+                            <h1 className='text-[#000000] text-lg mb-3 font-semibold'>Cambiar Contraseña</h1>
                             <form>
                                 <div className='flex flex-col w-full gap-1 mb-3'>
                                     <label htmlFor="email">Correo</label>
-                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="email" placeholder='Tu correo' name='email' id='email<' />
+                                    <input className='px-4 py-2 focus:border-[#84E08C] outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="email" placeholder='Tu correo' name='email' id='email<' />
                                 </div>
                                 <div className='flex flex-col w-full gap-1'>
                                     <label htmlFor="o_password">Antigua Contraseña</label>
@@ -169,7 +169,7 @@ const Profile = () => {
                                     <label htmlFor="n_password">Nueva Contraseña</label>
                                     <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="password" placeholder='Tu nueva contraseña' name='new_password' id='n_password' />
                                 </div>
-                                <button className='bg-blue-500 hover:shadow-blue-500/50 hover:shadow-lg text-white rounded-md px-7 py-2 mt-5 '>Actualizar</button>
+                                <button className='bg-green-500 hover:shadow-green-500/50 hover:shadow-lg text-white rounded-md px-7 py-2 mt-5'>Actualizar</button>
                             </form>
                         </div>
                     </div>

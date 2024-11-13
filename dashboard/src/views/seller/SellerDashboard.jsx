@@ -41,7 +41,7 @@ const SellerDashboard = () => {
             },
             chart: {
                 background: 'transparent',
-                foreColor: '#d0d2d6'
+                foreColor: '#000000'
             },
             dataLabels: {
                 enabled: false
@@ -87,10 +87,10 @@ const SellerDashboard = () => {
         dispatch(get_seller_dashboard_index_data())
     }, [])
     return (
-        <div className='px-2 md:px-7 py-5'>
+        <div className='px-2 md:px-7 py-5 bg-[#006400]'>
             <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7'>
-                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
-                    <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
+                <div className='flex justify-between items-center p-5 bg-[#FFFFFF] rounded-md gap-3'>
+                    <div className='flex flex-col justify-start items-start text-[#000000]'>
                         <h2 className='text-3xl font-bold'>S/{totalSale}</h2>
                         <span className='text-md font-medium'>Ventas Totales</span>
                     </div>
@@ -98,8 +98,8 @@ const SellerDashboard = () => {
                         <BsCurrencyDollar className='text-[#28c76f] shadow-lg' />
                     </div>
                 </div>
-                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
-                    <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
+                <div className='flex justify-between items-center p-5 bg-[#FFFFFF] rounded-md gap-3'>
+                    <div className='flex flex-col justify-start items-start text-[#000000]'>
                         <h2 className='text-3xl font-bold'>{totalProduct}</h2>
                         <span className='text-md font-medium'>Productos</span>
                     </div>
@@ -107,8 +107,8 @@ const SellerDashboard = () => {
                         <RiProductHuntLine className='text-[#cd00e8] shadow-lg' />
                     </div>
                 </div>
-                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
-                    <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
+                <div className='flex justify-between items-center p-5 bg-[#FFFFFF] rounded-md gap-3'>
+                    <div className='flex flex-col justify-start items-start text-[#000000]'>
                         <h2 className='text-3xl font-bold'>{totalOrder}</h2>
                         <span className='text-md font-medium'>Ordenes</span>
                     </div>
@@ -116,8 +116,8 @@ const SellerDashboard = () => {
                         <AiOutlineShoppingCart className='text-[#00cfe8] shadow-lg' />
                     </div>
                 </div>
-                <div className='flex justify-between items-center p-5 bg-[#1C1C1C] rounded-md gap-3'>
-                    <div className='flex flex-col justify-start items-start text-[#d0d2d6]'>
+                <div className='flex justify-between items-center p-5 bg-[#FFFFFF] rounded-md gap-3'>
+                    <div className='flex flex-col justify-start items-start text-[#000000]'>
                         <h2 className='text-3xl font-bold'>{totalPendingOrder}</h2>
                         <span className='text-md font-medium'>Ordenes Pendientes</span>
                     </div>
@@ -128,15 +128,15 @@ const SellerDashboard = () => {
             </div>
             <div className='w-full flex flex-wrap mt-7'>
                 <div className='w-full lg:w-7/12 lg:pr-3'>
-                    <div className='w-full bg-[#1C1C1C] p-4 rounded-md'>
+                    <div className='w-full bg-[#FFFFFF] p-4 rounded-md'>
                         <Chart options={state.options} series={state.series} type='bar' height={350} />
                     </div>
                 </div>
                 <div className='w-full lg:w-5/12 lg:pl-4 mt-6 lg:mt-0'>
-                    <div className='w-full bg-[#1C1C1C] p-4 rounded-md text-[#d0d2d6]'>
+                    <div className='w-full bg-[#FFFFFF] p-4 rounded-md text-[#d0d2d6]'>
                         <div className='flex justify-between items-center'>
-                            <h2 className='font-semibold text-lg text-[#d0d2d6] pb-3'>Mensaje más reciente</h2>
-                            <Link className='font-semibold text-sm text-[#d0d2d6]'>Ver todo</Link>
+                            <h2 className='font-semibold text-lg text-black pb-3'>Mensaje más reciente</h2>
+                            <Link className='font-semibold text-sm text-black'>Ver todo</Link>
                         </div>
                         <div className='flex flex-col gap-2 pt-6 text-[#d0d2d6]'>
                             <ol className='relative border-1 border-slate-600 ml-4'>
@@ -165,14 +165,14 @@ const SellerDashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className='w-full p-4  bg-[#1C1C1C] rounded-md mt-6'>
+            <div className='w-full p-4 bg-white rounded-md mt-6'>
                 <div className='flex justify-between items-center'>
-                    <h2 className='font-semibold text-lg text-[#d0d2d6] pb-3'>Ordenes Recientes</h2>
-                    <Link to='/seller/dashboard/orders' className='font-semibold text-sm text-[#d0d2d6]'>Ver todo</Link>
+                    <h2 className='font-semibold text-lg text-black pb-3'>Ordenes Recientes</h2>
+                    <Link to='/seller/dashboard/orders' className='font-semibold text-sm text-black'>Ver todo</Link>
                 </div>
                 <div className='relative overflow-x-auto'>
-                    <table className='w-full text-sm text-left text-[#d0d2d6]'>
-                        <thead className='text-sm text-[#d0d2d6] uppercase border-b border-slate-700'>
+                    <table className='w-full text-sm text-left text-black'>
+                        <thead className='text-sm text-black uppercase border-b border-[#000000]'>
                             <tr>
                                 <th scope='col' className='py-3 px-4'>ID</th>
                                 <th scope='col' className='py-3 px-4'>Precio</th>

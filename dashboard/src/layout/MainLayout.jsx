@@ -32,7 +32,7 @@ const MainLayout = () => {
   }, [])
 
   return (
-    <div className='bg-[#0a2f07] w-full min-h-screen'>
+    <div className='bg-[#006400] w-full min-h-screen'>
       <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <div className='ml-0 lg:ml-[260px] pt-[95px] transition-all'>

@@ -24,12 +24,12 @@ const Orders = () => {
     }, [parPage, currentPage, searchValue])
 
     return (
-        <div className='px-2 lg:px-7 pt-5 '>
-            <div className='w-full p-4  bg-[#1C1C1C] rounded-md'>
+        <div className='px-2 lg:px-7 pt-5 bg-[#006400] min-h-screen'>
+            <div className='w-full p-4  bg-[#FFFFFF] rounded-md'>
                 <Search setParPage={setParPage} setSearchValue={setSearchValue} searchValue={searchValue} />
                 <div className='relative overflow-x-auto'>
-                    <table className='w-full text-sm text-left text-[#d0d2d6]'>
-                        <thead className='text-sm text-[#d0d2d6] uppercase border-b border-slate-700'>
+                    <table className='w-full text-sm text-left text-[#000000]'>
+                        <thead className='text-sm text-[#000000] uppercase border-b border-slate-700'>
                             <tr>
                                 <th scope='col' className='py-3 px-4'>ID Orden</th>
                                 <th scope='col' className='py-3 px-4'>Precio</th>
