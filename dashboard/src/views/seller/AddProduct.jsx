@@ -145,8 +145,8 @@ const AddProduct = () => {
                                 <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#FFFFFF] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.name} type="text" placeholder='Nombre del Producto' name='name' id='name' />
                             </div>
                             <div className='flex flex-col w-full gap-1'>
-                                <label htmlFor="brand">Marca del Producto:</label>
-                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#FFFFFF] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.brand} type="text" placeholder='Marca del Producto' name='brand' id='brand' />
+                                <label htmlFor="brand">Presentación:</label>
+                                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#FFFFFF] border border-slate-700 rounded-md text-[#d0d2d6]' onChange={inputHandle} value={state.brand} type="text" placeholder='Presentación del Producto' name='brand' id='brand' />
                             </div>
                         </div>
                         <div className='flex flex-col mb-3 md:flex-row gap-4 w-full text-[#000000]'>

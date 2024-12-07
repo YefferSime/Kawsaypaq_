@@ -157,7 +157,7 @@ const Category = () => {
                             <form onSubmit={add_category}>
                                 <div className='flex flex-col w-full gap-1 mb-3'>
                                     <label htmlFor="name">Nombre de la Categoria</label>
-                                    <input value={state.name} onChange={(e) => setState({ ...state, name: e.target.value })} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#1C1C1C] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" id='name' name='category_name' placeholder='Nombre de la categoria' required />
+                                    <input value={state.name} onChange={(e) => setState({ ...state, name: e.target.value })} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#ffffff] border border-slate-700 rounded-md text-[#000000]' type="text" id='name' name='category_name' placeholder='Nombre de la categoria' required />
                                 </div>
                                 <div>
 

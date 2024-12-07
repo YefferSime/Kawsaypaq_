@@ -22,11 +22,11 @@ const SellerRequest = () => {
     }, [parPage, searchValue, currentPage])
     return (
         <div className='px-2 lg:px-7 pt-5'>
-            <div className='w-full p-4  bg-[#1C1C1C] rounded-md'>
+            <div className='w-full p-4  bg-[#ffffff] rounded-md'>
                 <Search setParPage={setParPage} setSearchValue={setSearchValue} searchValue={searchValue} />
                 <div className='relative overflow-x-auto'>
-                    <table className='w-full text-sm text-left text-[#d0d2d6]'>
-                        <thead className='text-xs text-[#d0d2d6] uppercase border-b border-slate-700'>
+                    <table className='w-full text-sm text-left text-[#020202]'>
+                        <thead className='text-xs text-[#000000] uppercase border-b border-slate-700'>
                             <tr>
                                 <th scope='col' className='py-3 px-4'>N°</th>
                                 <th scope='col' className='py-3 px-4'>Nombre</th>

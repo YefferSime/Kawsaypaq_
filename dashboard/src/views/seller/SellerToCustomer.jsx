@@ -81,21 +81,30 @@ const SellerToCustomer = () => {
                                 <span onClick={() => setShow(!show)} className='block cursor-pointer md:hidden'><IoMdClose /></span>
                             </div>
                             {
-                                customers.map((c, i) => <Link key={i} to={`/seller/dashboard/chat-customer/${c.fdId}`} className={`h-[60px] flex justify-start gap-2 items-center text-black px-2 py-2 rounded-sm cursor-pointer bg-[#6EE15E]`}> 
-                                    <div className='relative'>
-                                        <img className='w-[38px] h-[38px] border-white border-2 max-w-[38px] p-[2px] rounded-full' src="http://localhost:3001/images/admin.jpg" alt="" />
-                                        {
-                                            activeCustomer.some((a => a.customerId === c.fdId)) && <div className='w-[10px] h-[10px] bg-green-500 rounded-full absolute right-0 bottom-0'></div>
-                                        }
-                                    </div>
-                                    <div className='flex justify-center items-start flex-col w-full'>
-                                        <div className='flex justify-between items-center w-full'>
-                                            <h2 className='text-base font-semibold'>{c.name}</h2>
+                                customers.map((c, i) => (
+                                    <Link
+                                        key={i}
+                                        to={`/seller/dashboard/chat-customer/${c.fdId}`}
+                                        className={`h-[60px] flex justify-start gap-2 items-center text-black px-2 py-2 cursor-pointer ${customerId === c.fdId ? 'bg-[#6EE15E] border rounded-lg' : ''}`}
+                                    >
+                                        <div className='relative'>
+                                            <img className='w-[38px] h-[38px] border-white border-2 max-w-[38px] p-[2px] rounded-full' src="http://localhost:3001/images/admin.jpg" alt="" />
+                                            {
+                                                activeCustomer.some(a => a.customerId === c.fdId) &&
+                                                <div className='w-[10px] h-[10px] bg-green-500 rounded-full absolute right-0 bottom-0'></div>
+                                            }
                                         </div>
-                                    </div>
-                                </Link>)
+                                        <div className='flex justify-center items-start flex-col w-full'>
+                                            <div className='flex justify-between items-center w-full'>
+                                                <h2 className='text-base font-semibold'>{c.name}</h2>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))
                             }
                         </div>
+
+
                     </div>
                     <div className='w-full md:w-[calc(100%-200px)] md:pl-4'>
                         <div className='flex justify-between items-center'>
@@ -126,7 +135,7 @@ const SellerToCustomer = () => {
                                                         <div>
                                                             <img className='w-[38px] h-[38px] border-2 border-white rounded-full max-w-[38px] p-[3px]' src="http://localhost:3001/images/admin.jpg" alt="" />
                                                         </div>
-                                                        <div className='flex justify-center items-start flex-col w-full bg-blue-500 shadow-lg shadow-blue-500/50 text-white py-1 px-2 rounded-sm'> {/* Cambié el color aquí */}
+                                                        <div className='flex justify-center items-start flex-col w-full bg-orange-500 shadow-lg shadow-orange-500/50 text-white py-1 px-2 rounded-sm'> {/* Cambié el color aquí */}
                                                             <span>{m.message}</span>
                                                         </div>
                                                     </div>
@@ -149,7 +158,7 @@ const SellerToCustomer = () => {
                                         }
                                     }) : <div className='w-full h-full flex justify-center items-center flex-col gap-2 text-white'>
                                         <span><BsEmojiSmile /></span>
-                                        <span>Selecciona un cliente...</span> 
+                                        <span>Selecciona un cliente...</span>
                                     </div>
                                 }
 

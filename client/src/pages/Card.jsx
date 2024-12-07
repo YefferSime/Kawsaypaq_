@@ -175,7 +175,7 @@ const Card = () => {
                                                 <span>Total</span>
                                                 <span className='text-lg text-orange-500'>S/{price + shipping_fee}</span>
                                             </div>
-                                            <button onClick={redirect} className='px-5 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg bg-orange-500 text-sm text-white uppercase'>Proceed to checkout {buy_product_item}</button>
+                                            <button onClick={redirect} className='px-5 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg bg-orange-500 text-sm text-white uppercase'>Pagar {buy_product_item}</button>
                                         </div>
                                     }
                                 </div>

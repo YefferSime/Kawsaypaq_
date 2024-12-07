@@ -47,13 +47,13 @@ export const allNav = [
         role: 'admin',
         path: '/admin/dashboard/deactive-sellers'
     },
-    //{
-    //    id: 7,
-    //    title: 'Solicitud de Vendedores',
-    //    icon: <BiLoaderCircle />,
-    //    role: 'admin',
-    //    path: '/admin/dashboard/sellers-request'
-    //},
+    {
+        id: 7,
+        title: 'Solicitud de Vendedores',
+        icon: <BiLoaderCircle />,
+        role: 'admin',
+        path: '/admin/dashboard/sellers-request'
+    },
     {
         id: 8,
         title: 'Chat con Vendedores',
