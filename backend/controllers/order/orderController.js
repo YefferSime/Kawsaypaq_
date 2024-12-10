@@ -255,52 +255,86 @@ class orderController {
     }
 
     get_seller_orders = async (req, res) => {
-
-        const { sellerId } = req.params
-        let { page, parPage, searchValue } = req.query
-        page = parseInt(page)
-        parPage = parseInt(parPage)
-
-        const skipPage = parPage * (page - 1)
-
+        const { sellerId } = req.params;
+        let { page, parPage, searchValue } = req.query;
+        page = parseInt(page);
+        parPage = parseInt(parPage);
+        const skipPage = parPage * (page - 1);
 
         try {
-            if (searchValue) {
+            // Crear consulta base con filtro por sellerId
+            let query = {
+                'products.sellerId': sellerId, // Verificar que al menos un producto pertenece al vendedor
+            };
 
-            } else {
-                const orders = await authOrderModel.find({
-                    sellerId,
-                }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
-                const totalOrder = await authOrderModel.find({
-                    sellerId,
-                }).countDocuments()
-                responseReturn(res, 200, { orders, totalOrder })
+            if (searchValue) {
+                query = {
+                    ...query,
+                    $or: [
+                        { 'products.name': { $regex: searchValue, $options: 'i' } },
+                        { 'products.category': { $regex: searchValue, $options: 'i' } },
+                    ],
+                };
             }
+
+            // Obtener órdenes paginadas
+            const orders = await customerOrder
+                .aggregate([
+                    { $match: query },
+                    { $skip: skipPage },
+                    { $limit: parPage },
+                    {
+                        $lookup: {
+                            from: 'authororders',
+                            localField: '_id',
+                            foreignField: 'orderId',
+                            as: 'suborder',
+                        },
+                    },
+                ])
+                .sort({ createdAt: -1 });
+
+            const totalOrder = await customerOrder.countDocuments(query);
+
+            responseReturn(res, 200, { orders, totalOrder });
         } catch (error) {
-            console.log('get seller order error ' + error.message)
-            responseReturn(res, 500, { message: 'internal server error' })
+            console.log('Error en get_seller_orders: ' + error.message);
+            responseReturn(res, 500, { message: 'Error interno del servidor' });
         }
-    }
+    };
+
+
 
     get_seller_order = async (req, res) => {
-
-        const { orderId } = req.params
-
+        const { orderId } = req.params; // ID de la orden recibido en la URL
+    
         try {
-            const order = await authOrderModel.findById(orderId)
-
-            responseReturn(res, 200, { order })
+            // Buscar la orden por su ID
+            const order = await customerOrder.findById(orderId);
+    
+            // Verificar si la orden existe
+            if (!order) {
+                return responseReturn(res, 404, { message: 'Orden no encontrada' });
+            }
+    
+            // Retornar la orden encontrada
+            responseReturn(res, 200, { order });
         } catch (error) {
-            console.log('get admin order ' + error.message)
+            console.log('Error en get_seller_order: ' + error.message);
+            responseReturn(res, 500, { message: 'Error interno del servidor' });
         }
-    }
+    };
+    
+
+
+
 
     seller_order_status_update = async (req, res) => {
         const { orderId } = req.params
         const { status } = req.body
 
         try {
-            await authOrderModel.findByIdAndUpdate(orderId, {
+            await customerOrder.findByIdAndUpdate(orderId, {
                 delivery_status: status
             })
             responseReturn(res, 200, { message: 'order status change success' })

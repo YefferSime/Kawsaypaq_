@@ -1,39 +1,46 @@
-const multer = require('multer');
-const path = require('path');
+const formidable = require('formidable');
+const cloudinary = require('cloudinary').v2;
 const productModel = require('../../models/productModel');
 const { responseReturn } = require('../../utiles/response');
 
-// Configuración de almacenamiento de `multer`
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'uploads/products'); // Carpeta donde se guardarán las imágenes
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname)); // Nombre único para cada archivo
-    }
-});
-
-const upload = multer({ 
-    storage: storage,
-    limits: { fileSize: 5 * 1024 * 1024 }, // Límite de tamaño de archivo (5MB)
+// Configurar Cloudinary
+cloudinary.config({
+    cloud_name: process.env.cloud_name,
+    api_key: process.env.api_key,
+    api_secret: process.env.api_secret,
+    secure: true,
 });
 
 class ProductController {
+    // Método para agregar productos con imágenes en Cloudinary
     add_product = async (req, res) => {
-        upload.array('images', 10)(req, res, async (err) => { // Permite hasta 10 imágenes
+        const { id } = req; // ID del vendedor (suponiendo que viene de un middleware)
+        const form = formidable({ multiples: true });
+
+        form.parse(req, async (err, fields, files) => {
             if (err) {
-                return responseReturn(res, 400, { error: err.message });
+                return responseReturn(res, 400, { error: 'Error al procesar el formulario' });
             }
 
-            const { name, category, description, stock, price, discount, shopName, brand } = req.body;
-            const images = req.files.map(file => file.path); // Rutas de las imágenes
+            let { name, category, description, stock, price, discount, shopName, brand } = fields;
+            const { images } = files;
 
-            const slug = name.trim().split(' ').join('-');
+            name = name.trim();
+            const slug = name.split(' ').join('-');
+            const allImageUrl = [];
 
             try {
+                // Subir imágenes a Cloudinary
+                const imageFiles = Array.isArray(images) ? images : [images]; // Manejo de múltiples imágenes
+                for (const image of imageFiles) {
+                    const result = await cloudinary.uploader.upload(image.filepath, { folder: 'products' });
+                    allImageUrl.push(result.url);
+                }
+
+                // Crear el producto en la base de datos
                 await productModel.create({
-                    sellerId: req.id,
-                    name: name.trim(),
+                    sellerId: id,
+                    name,
                     slug,
                     shopName: shopName.trim(),
                     category: category.trim(),
@@ -41,44 +48,43 @@ class ProductController {
                     stock: parseInt(stock),
                     price: parseInt(price),
                     discount: parseInt(discount),
-                    images, // Guardar las rutas de las imágenes
-                    brand: brand.trim()
+                    images: allImageUrl, // Guardar URLs de imágenes
+                    brand: brand.trim(),
                 });
 
-                responseReturn(res, 201, { message: "Producto agregado exitosamente" });
+                responseReturn(res, 201, { message: 'Producto agregado exitosamente' });
             } catch (error) {
                 responseReturn(res, 500, { error: error.message });
             }
         });
-    }
+    };
 
+    // Obtener productos (con paginación y búsqueda)
     products_get = async (req, res) => {
         const { page, searchValue, parPage } = req.query;
-        const { id } = req;
-
+        const { id } = req; // ID del vendedor
         const skipPage = parseInt(parPage) * (parseInt(page) - 1);
 
         try {
+            const query = { sellerId: id };
             if (searchValue) {
-                const products = await productModel.find({
-                    $text: { $search: searchValue },
-                    sellerId: id
-                }).skip(skipPage).limit(parPage).sort({ createdAt: -1 });
-                const totalProduct = await productModel.countDocuments({
-                    $text: { $search: searchValue },
-                    sellerId: id
-                });
-                responseReturn(res, 200, { totalProduct, products });
-            } else {
-                const products = await productModel.find({ sellerId: id }).skip(skipPage).limit(parPage).sort({ createdAt: -1 });
-                const totalProduct = await productModel.countDocuments({ sellerId: id });
-                responseReturn(res, 200, { totalProduct, products });
+                query.$text = { $search: searchValue };
             }
+
+            const products = await productModel
+                .find(query)
+                .skip(skipPage)
+                .limit(parseInt(parPage))
+                .sort({ createdAt: -1 });
+
+            const totalProduct = await productModel.countDocuments(query);
+            responseReturn(res, 200, { totalProduct, products });
         } catch (error) {
             responseReturn(res, 500, { error: error.message });
         }
-    }
+    };
 
+    // Obtener un producto por su ID
     product_get = async (req, res) => {
         const { productId } = req.params;
         try {
@@ -87,60 +93,69 @@ class ProductController {
         } catch (error) {
             responseReturn(res, 500, { error: error.message });
         }
-    }
+    };
 
+    // Actualizar un producto
     product_update = async (req, res) => {
-        let { name, description, discount, price, brand, productId, stock } = req.body;
-        name = name.trim();
-        const slug = name.split(' ').join('-');
+        const { name, description, discount, price, brand, productId, stock } = req.body;
+        const slug = name.trim().split(' ').join('-');
+
         try {
-            await productModel.findByIdAndUpdate(productId, {
-                name, description, discount, price, brand, stock, slug
-            });
-            const product = await productModel.findById(productId);
-            responseReturn(res, 200, { product, message: 'Producto actualizado exitosamente' });
+            const updatedProduct = await productModel.findByIdAndUpdate(
+                productId,
+                { name, description, discount, price, brand, stock, slug },
+                { new: true } // Devolver el producto actualizado
+            );
+            responseReturn(res, 200, { product: updatedProduct, message: 'Producto actualizado exitosamente' });
         } catch (error) {
             responseReturn(res, 500, { error: error.message });
         }
-    }
+    };
 
+    // Actualizar imágenes de un producto
     product_image_update = async (req, res) => {
-        upload.single('newImage')(req, res, async (err) => {
+        const form = formidable();
+
+        form.parse(req, async (err, fields, files) => {
             if (err) {
-                return responseReturn(res, 400, { error: err.message });
+                return responseReturn(res, 400, { error: 'Error al procesar el formulario' });
             }
 
-            const { productId, oldImage } = req.body;
-            const newImage = req.file.path; // Nueva ruta de la imagen
+            const { productId, oldImage } = fields;
+            const { newImage } = files;
 
             try {
-                let { images } = await productModel.findById(productId);
-                const index = images.findIndex(img => img === oldImage);
-                if (index !== -1) {
-                    images[index] = newImage;
+                // Subir nueva imagen a Cloudinary
+                const result = await cloudinary.uploader.upload(newImage.filepath, { folder: 'products' });
 
-                    await productModel.findByIdAndUpdate(productId, { images });
+                // Actualizar la URL en la base de datos
+                const product = await productModel.findById(productId);
+                const imageIndex = product.images.findIndex((img) => img === oldImage);
 
-                    responseReturn(res, 200, { message: 'Imagen del producto actualizada exitosamente' });
+                if (imageIndex !== -1) {
+                    product.images[imageIndex] = result.url;
+                    await product.save();
+
+                    responseReturn(res, 200, { product, message: 'Imagen del producto actualizada exitosamente' });
                 } else {
-                    responseReturn(res, 404, { error: 'Imagen no encontrada' });
+                    responseReturn(res, 404, { error: 'Imagen anterior no encontrada' });
                 }
             } catch (error) {
                 responseReturn(res, 500, { error: error.message });
             }
         });
-    }
+    };
 
+    // Eliminar un producto
     delete_product = async (req, res) => {
-        const { productId } = req.params; // Obtener el ID del producto de los parámetros de la ruta
+        const { productId } = req.params;
         try {
-            // Eliminar el producto de la base de datos
             await productModel.findByIdAndDelete(productId);
             responseReturn(res, 200, { message: 'Producto eliminado exitosamente' });
         } catch (error) {
             responseReturn(res, 500, { error: error.message });
         }
-    }
+    };
 }
 
 module.exports = new ProductController();

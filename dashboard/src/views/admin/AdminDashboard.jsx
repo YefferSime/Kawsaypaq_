@@ -90,7 +90,7 @@ const AdminDashboard = () => {
             ]
         }
     }
-    
+
 
     return (
         <div className='px-2 md:px-7 py-5'>
@@ -146,18 +146,18 @@ const AdminDashboard = () => {
                             <Link className='font-semibold text-sm text-[#66BB6A]'>Ver todo</Link>
                         </div>
                         <div className='flex flex-col gap-2 pt-6 text-[#E0E0E0]'>
-                            <ol className='relative border-1 border-slate-600 ml-4'>
+                            <ol className='relative border-1 border-[#1B5E20] ml-4'>
                                 {recentMessage.map((m, i) => (
                                     <li key={i} className='mb-3 ml-6'>
-                                        <div className='flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#00D1E848] rounded-full z-10'>
+                                        <div className='flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#2E7D32] rounded-full z-10'>
                                             <img className='w-full rounded-full h-full shadow-lg' src={m.senderId === userInfo._id ? userInfo.image : seller} alt="" />
                                         </div>
-                                        <div className='p-3 bg-[#2C2C2C] rounded-lg border border-slate-600 shadow-sm'>
+                                        <div className='p-3 bg-[#A5D6A7] rounded-lg border border-[#1B5E20] shadow-sm'>
                                             <div className='flex justify-between items-center mb-2'>
-                                                <Link className='text-md font-normal'>{m.senderName}</Link>
-                                                <time className='mb-1 text-sm font-normal'>{moment(m.createdAt).startOf('hour').fromNow()}</time>
+                                                <Link className='text-md font-normal text-[#1B5E20]'>{m.senderName}</Link>
+                                                <time className='mb-1 text-sm font-normal text-[#4CAF50]'>{moment(m.createdAt).startOf('hour').fromNow()}</time>
                                             </div>
-                                            <div className='p-2 text-xs font-normal bg-[#1C1C1C] rounded-lg border border-slate-800'>
+                                            <div className='p-2 text-xs font-normal bg-[#81C784] text-[#1B5E20] rounded-lg border border-[#1B5E20]'>
                                                 {m.message}
                                             </div>
                                         </div>
@@ -165,6 +165,8 @@ const AdminDashboard = () => {
                                 ))}
                             </ol>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -178,24 +180,25 @@ const AdminDashboard = () => {
                     <table className='w-full text-sm text-left text-[#000000]'>
                         <thead className='text-sm text-[#000000] uppercase border-b border-slate-700'>
                             <tr>
-                                <th scope='col' className='px-4 py-3'>No</th>
-                                <th scope='col' className='px-4 py-3'>Compañía</th>
+                                <th scope='col' className='px-4 py-3'>N°</th>
+                                <th scope='col' className='px-4 py-3'>Tienda</th>
                                 <th scope='col' className='px-4 py-3'>Vendedor</th>
                                 <th scope='col' className='px-4 py-3'>Total</th>
                                 <th scope='col' className='px-4 py-3'>Fecha</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {recentOrders.map((order, i) => (
-                                <tr key={i} className='border-b border-slate-600'>
-                                    <td className='px-4 py-2'>{i + 1}</td>
-                                    <td className='px-4 py-2'>{order.company}</td>
-                                    <td className='px-4 py-2'>{order.seller}</td>
-                                    <td className='px-4 py-2'>S/{order.price}</td>
-                                    <td className='px-4 py-2'>{moment(order.date).format('DD/MM/YYYY')}</td>
+                            {recentOrders.map((order, index) => (
+                                <tr key={index} className="border-b border-slate-600">
+                                    <td className="px-4 py-2">{index + 1}</td>
+                                    <td className="px-4 py-2">{order.shopName || 'N/A'}</td>
+                                    <td className="px-4 py-2">{order.shippingInfo?.name || 'N/A'}</td>
+                                    <td className="px-4 py-2">S/{order.price}</td>
+                                    <td className="px-4 py-2">{moment(order.date).format('DD/MM/YYYY')}</td>
                                 </tr>
                             ))}
                         </tbody>
+
                     </table>
                 </div>
             </div>

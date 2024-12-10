@@ -1,120 +1,126 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import toast from 'react-hot-toast'
-import { useDispatch, useSelector } from 'react-redux'
-import { get_admin_order, admin_order_status_update, messageClear } from '../../store/Reducers/OrderReducer'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { get_admin_order, admin_order_status_update, messageClear } from '../../store/Reducers/OrderReducer';
+
 const OrderDetails = () => {
+    const { orderId } = useParams();
+    const dispatch = useDispatch();
 
-    const { orderId } = useParams()
-    const dispatch = useDispatch()
-
-    const { order, errorMessage, successMessage } = useSelector(state => state.order)
+    const { order, errorMessage, successMessage } = useSelector(state => state.order);
 
     useEffect(() => {
-        dispatch(get_admin_order(orderId))
-    }, [orderId])
+        dispatch(get_admin_order(orderId));
+    }, [orderId, dispatch]);
 
-    const [status, setStatus] = useState('')
+    const [status, setStatus] = useState('');
     useEffect(() => {
-        setStatus(order?.delivery_status)
-    }, [order])
+        setStatus(order?.delivery_status);
+    }, [order]);
+
     const status_update = (e) => {
-        dispatch(admin_order_status_update({ orderId, info: { status: e.target.value } }))
-        setStatus(e.target.value)
-    }
+        dispatch(admin_order_status_update({ orderId, info: { status: e.target.value } }));
+        setStatus(e.target.value);
+    };
 
     useEffect(() => {
         if (successMessage) {
-            toast.success(successMessage)
-            dispatch(messageClear())
+            toast.success(successMessage);
+            dispatch(messageClear());
         }
         if (errorMessage) {
-            toast.error(errorMessage)
-            dispatch(messageClear())
+            toast.error(errorMessage);
+            dispatch(messageClear());
         }
-    }, [successMessage, errorMessage])
+    }, [successMessage, errorMessage, dispatch]);
+
+    // Mapeo de estados en inglés a español con colores
+    const statusMap = {
+
+        paid: <span className="bg-green-100 text-green-800 px-2 py-1 rounded">Pagado</span>,
+        unpaid: <span className="bg-red-100 text-red-800 px-2 py-1 rounded">No pagado</span>,
+    };
+
     return (
         <div className='px-2 lg:px-7 pt-5'>
-            <div className='w-full p-4  bg-[#283046] rounded-md'>
-                <div className='flex justify-between items-center p-4'>
-                    <h2 className='text-xl text-[#d0d2d6]'>Order Details</h2>
-                    <select onChange={status_update} value={status} name="" id="" className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]'>
-                        <option value="pending">pending</option>
-                        <option value="processing">processing</option>
-                        <option value="warehouse">warehouse</option>
-                        <option value="placed">placed</option>
-                        <option value="cancelled">cancelled</option>
+            <div className='w-full p-6 bg-[#ffffff] rounded-md shadow-md'>
+                {/* Header */}
+                <div className='flex justify-between items-center mb-6'>
+                    <h2 className='text-2xl font-bold text-[#000000]'>Detalles del Pedido</h2>
+                    <select 
+                        onChange={status_update} 
+                        value={status} 
+                        className='px-4 py-2 bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6] focus:outline-none'
+                    >
+                        <option value="pending">Pendiente</option>
+                        <option value="processing">En proceso</option>
+                        <option value="warehouse">En almacén</option>
+                        <option value="placed">Listo para envío</option>
+                        <option value="cancelled">Entregado</option>
                     </select>
                 </div>
-                <div className='p-4'>
-                    <div className='flex gap-2 text-lg text-[#d0d2d6]'>
-                        <h2>#{order._id}</h2>
-                        <span>{order.date}</span>
-                    </div>
-                    <div className='flex flex-wrap'>
-                        <div className='w-[32%]'>
-                            <div className='pr-3 text-[#d0d2d6] text-lg'>
-                                <div className='flex flex-col gap-1'>
-                                    <h2 className='pb-2 font-semibold'>Deliver to : {order.shippingInfo?.name}</h2>
-                                    <p><span className='text-sm'>${order.shippingInfo?.address}   {order.shippingInfo?.province} {order.shippingInfo?.city} {order.shippingInfo?.area}</span></p>
-                                </div>
-                                <div className='flex justify-start items-center gap-3'>
-                                    <h2>Payment Status : </h2>
-                                    <span className='text-base'>{order.payment_status}</span>
-                                </div>
-                                <span>Price : ${order.price}</span>
-                                <div className='mt-4 flex flex-col gap-8'>
-                                    <div className='text-[#d0d2d6]'>
-                                        {
-                                            order.products && order.products.map((p, i) => <div key={i} className='flex gap-3 text-md'>
-                                                <img className='w-[45px] h-[45px]' src={p.images[0]} alt="" />
-                                                <div>
-                                                    <h2>{p.name}</h2>
-                                                    <p>
-                                                        <span>Brand : </span>
-                                                        <span>{p.brand} </span>
-                                                        <span className='text-lg'>Quantity : {p.quantity}</span>
-                                                    </p>
-                                                </div>
-                                            </div>)
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='w-[68%]'>
-                            <div className='pl-3'>
-                                <div className='mt-4 flex flex-col'>
-                                    {
-                                        order?.suborder?.map((o, i) => <div key={i + 20} className='text-[#d0d2d6] mb-6'>
-                                            <div className='flex justify-start items-center gap-3'>
-                                                <h2>Seller {i + 1} order : </h2>
-                                                <span>{o.delivery_status}</span>
-                                            </div>
-                                            {
-                                                o.products?.map((p, i) => <div className='flex gap-3 text-md mt-2'>
-                                                    <img className='w-[45px] h-[45px]' src={p.images[0]} alt="" />
-                                                    <div>
-                                                        <h2>{p.name}</h2>
-                                                        <p>
-                                                            <span>Brand : </span>
-                                                            <span>{p.brand} </span>
-                                                            <span className='text-lg'>Quantity : {p.quantity}</span>
-                                                        </p>
-                                                    </div>
-                                                </div>)
-                                            }
-                                        </div>)
-                                    }
 
+                {/* Order Info */}
+                <div className='mb-6'>
+                    <div className='flex justify-between items-center'>
+                        <h2 className='text-lg font-medium text-[#000000]'>Pedido #{order?._id}</h2>
+                        <span className='text-sm text-gray-500'>{order?.date}</span>
+                    </div>
+                </div>
+
+                {/* Shipping Info */}
+                <div className='bg-gray-50 p-4 rounded-md mb-6'>
+                    <h3 className='font-semibold text-lg text-[#000000] mb-2'>Información de Envío</h3>
+                    <p className='text-sm text-[#000000]'>
+                        <span className='font-medium'>Nombre:</span> {order.shippingInfo?.name}
+                    </p>
+                    <p className='text-sm text-[#000000]'>
+                        <span className='font-medium'>Dirección:</span> {order.shippingInfo?.address}, {order.shippingInfo?.province}, {order.shippingInfo?.city}, {order.shippingInfo?.area}
+                    </p>
+                </div>
+
+                {/* Payment Info */}
+                <div className='bg-gray-50 p-4 rounded-md mb-6'>
+                    <h3 className='font-semibold text-lg text-[#000000] mb-2'>Información de Pago</h3>
+                    <p className='text-sm text-[#000000] flex items-center'>
+                        <span className='font-medium mr-2'>Estado del Pago:</span> {statusMap[order.payment_status]}
+                    </p>
+                    <p className='text-sm text-[#000000]'>
+                        <span className='font-medium'>Precio Total:</span> S/{order.price}
+                    </p>
+                </div>
+
+                {/* Products Info */}
+                <div className='bg-gray-50 p-4 rounded-md'>
+                    <h3 className='font-semibold text-lg text-[#000000] mb-4'>Productos</h3>
+                    <div className='space-y-4'>
+                        {order.products && order.products.map((product, index) => (
+                            <div key={index} className='flex items-center gap-4 bg-gray-100 p-3 rounded-md'>
+                                <img 
+                                    className='w-[60px] h-[60px] object-cover rounded-md' 
+                                    src={product.images[0]} 
+                                    alt={product.name} 
+                                />
+                                <div>
+                                    <h4 className='text-md font-medium text-[#000000]'>{product.name}</h4>
+                                    <p className='text-sm text-gray-600'>
+                                        <span className='font-medium'>Marca:</span> {product.brand}
+                                    </p>
+                                    <p className='text-sm text-gray-600'>
+                                        <span className='font-medium'>Cantidad:</span> {product.quantity}
+                                    </p>
+                                    <p className='text-sm text-gray-600'>
+                                        <span className='font-medium'>Precio:</span> ${product.price - Math.floor((product.price * product.discount) / 100)}
+                                    </p>
                                 </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default OrderDetails
+export default OrderDetails;

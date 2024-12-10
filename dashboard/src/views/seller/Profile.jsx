@@ -91,8 +91,7 @@ const Profile = () => {
                             <input onChange={add_image} type="file" className='hidden' id='img' />
                         </div>
                         <div className='px-0 md:px-5 py-2'>
-                            <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-slate-800 rounded-md relative'>
-                                <span className='p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50 absolute right-2 top-2 cursor-pointer'><FaEdit /></span>
+                            <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-green-800 rounded-md relative'>
                                 <div className='flex gap-2'>
                                     <span>Nombre : </span>
                                     <span>{userInfo.name}</span>
@@ -108,18 +107,6 @@ const Profile = () => {
                                 <div className='flex gap-2'>
                                     <span>Estado : </span>
                                     <span>{userInfo.status}</span>
-                                </div>
-                                <div className='flex gap-2'>
-                                    <span>Cuenta de Pago : </span>
-                                    <p>
-                                        {userInfo.payment === 'active' ? (
-                                            <span className='bg-red-500 text-white text-xs cursor-pointer font-normal ml-2 px-2 py-0.5 rounded '>{userInfo.payment}</span>
-                                        ) : (
-                                            <span onClick={() => dispatch(create_stripe_connect_account())} className='bg-blue-500 text-white text-xs cursor-pointer font-normal ml-2 px-2 py-0.5 rounded '>
-                                                Activar
-                                            </span>
-                                        )}
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +134,7 @@ const Profile = () => {
                                     </button>
                                 </form>
                             ) : (
-                                <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-slate-800 rounded-md relative'>
+                                <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-green-800 rounded-md relative'>
                                     <span onClick={handleEditClick} className='p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50 absolute right-2 top-2 cursor-pointer'><FaEdit /></span>
                                     <div className='flex gap-2'>
                                         <span>Tienda : </span>

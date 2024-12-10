@@ -13,7 +13,7 @@ const server = http.createServer(app);
 
 // Configuración de CORS
 app.use(cors({
-    origin: ['*'],
+    origin: ['http://localhost:3000', 'http://localhost:3001'],
     credentials: true
 }));
 
@@ -21,13 +21,13 @@ app.use(cors({
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Configuración de Socket.io
+
 const io = socket(server, {
     cors: {
         origin: '*',
         credentials: true
     }
 });
-
 // Variables para manejar usuarios
 var allCustomer = [];
 var allSeller = [];

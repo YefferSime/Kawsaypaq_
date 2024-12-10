@@ -1,35 +1,35 @@
-import React, { useState } from 'react'
-import Headers from '../components/Headers'
-import Footer from '../components/Footer'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
-import { FaList } from 'react-icons/fa'
-import { RxDashboard } from 'react-icons/rx'
-import { RiProductHuntLine } from 'react-icons/ri'
-import { BsChat, BsHeart } from 'react-icons/bs'
-import { TfiLock } from 'react-icons/tfi'
-import { BiLogInCircle } from 'react-icons/bi'
-import api from '../api/api'
-import { useDispatch } from 'react-redux'
-import { user_reset } from '../store/reducers/authReducer'
-import { reset_count } from '../store/reducers/cardReducer'
+import React, { useState } from 'react';
+import Headers from '../components/Headers';
+import Footer from '../components/Footer';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { FaList } from 'react-icons/fa';
+import { RxDashboard } from 'react-icons/rx';
+import { RiProductHuntLine } from 'react-icons/ri';
+import { BsChat, BsHeart } from 'react-icons/bs';
+import { TfiLock } from 'react-icons/tfi';
+import { BiLogInCircle } from 'react-icons/bi';
+import api from '../api/api';
+import { useDispatch } from 'react-redux';
+import { user_reset } from '../store/reducers/authReducer';
+import { reset_count } from '../store/reducers/cardReducer';
 
 const Dashboard = () => {
-
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const [filterShow, setFilterShow] = useState(false)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [filterShow, setFilterShow] = useState(false);
 
     const logout = async () => {
         try {
-            const { data } = await api.get('/customer/logout')
-            localStorage.removeItem('customerToken')
-            dispatch(user_reset())
-            dispatch(reset_count())
-            navigate('/login')
+            const { data } = await api.get('/customer/logout');
+            localStorage.removeItem('customerToken');
+            dispatch(user_reset());
+            dispatch(reset_count());
+            navigate('/login');
         } catch (error) {
-            console.log(error.response.data)
+            console.log(error.response.data);
         }
-    }
+    };
+
     return (
         <div>
             <Headers />
@@ -43,15 +43,15 @@ const Dashboard = () => {
                 </div>
                 <div className='h-full mx-auto'>
                     <div className='py-5 flex md-lg:w-[90%] mx-auto relative'>
-                        <div className={` rounded-md z-50 md-lg:absolute ${filterShow ? '-left-4' : '-left-[360px]'} w-[270px] ml-4 bg-white`}>
+                        <div className={`rounded-md z-50 md-lg:absolute ${filterShow ? '-left-4' : '-left-[360px]'} w-[270px] ml-4 bg-white`}>
                             <ul className='py-2 text-slate-600 px-4'>
                                 <li className='flex justify-start items-center gap-2 py-2'>
                                     <span className='text-xl'><RxDashboard /></span>
-                                    <Link to='/dashboard' className='block'>Dashboard</Link>
+                                    <Link to='/dashboard' className='block'>Panel de Control</Link>
                                 </li>
                                 <li className='flex justify-start items-center gap-2 py-2'>
                                     <span className='text-xl'><RiProductHuntLine /></span>
-                                    <Link to='/dashboard/my-orders' className='block'>Mis Ordenes</Link>
+                                    <Link to='/dashboard/my-orders' className='block'>Mis Órdenes</Link>
                                 </li>
                                 <li className='flex justify-start items-center gap-2 py-2'>
                                     <span className='text-xl'><BsHeart /></span>
@@ -61,10 +61,9 @@ const Dashboard = () => {
                                     <span className='text-xl'><BsChat /></span>
                                     <Link to='/dashboard/chat' className='block'>Chat</Link>
                                 </li>
-
                                 <li className='flex justify-start items-center gap-2 py-2'>
                                     <span className='text-xl'><TfiLock /></span>
-                                    <Link to='/dashboard/chage-password' className='block'>Cambiar Contraseña</Link>
+                                    <Link to='/dashboard/change-password' className='block'>Cambiar Contraseña</Link>
                                 </li>
                                 <li onClick={logout} className='flex justify-start items-center gap-2 py-2 cursor-pointer'>
                                     <span className='text-xl'><BiLogInCircle /></span>
@@ -82,7 +81,7 @@ const Dashboard = () => {
             </div>
             <Footer />
         </div>
-    )
-}
+    );
+};
 
-export default Dashboard
+export default Dashboard;

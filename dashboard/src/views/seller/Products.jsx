@@ -95,7 +95,7 @@ const Products = () => {
                                 products.map((d, i) => <tr key={i}>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>{i + 1}</td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        <img className='w-[45px] h-[45px]' src={`${baseURL}/${d.images[0]}`} alt="" />
+                                        <img className='w-[45px] h-[45px]' src={`${d.images[0]}`} alt="" />
                                     </td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
                                         <span>{d?.name?.slice(0, 16)}...</span>

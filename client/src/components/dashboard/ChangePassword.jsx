@@ -14,7 +14,7 @@ const ChangePassword = () => {
                 <input type="password" id='new_password' name='new_password' placeholder='Tu nueva contraseña...' className='outline-none px-3 py-1 border rounded-md text-slate-600' />
             </div>
             <div>
-                <button className='px-8 py-2 bg-purple-500 shadow-lg hover:shadow-purple-500/30 text-white rounded-md'>Actualizar</button>
+                <button className='px-8 py-2 bg-green-500 shadow-lg hover:shadow-purple-500/30 text-white rounded-md'>Actualizar</button>
             </div>
         </form>
     </div>

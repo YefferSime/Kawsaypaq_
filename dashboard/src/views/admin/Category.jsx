@@ -151,7 +151,7 @@ const Category = () => {
                     <div className='w-full pl-5'>
                         <div className='bg-[#FFFFFF] h-screen lg:h-auto px-3 py-2 lg:rounded-md text-[#000000]'>
                             <div className='flex justify-between items-center mb-4'>
-                                <h1 className='text-[#d0d2d6] font-semibold text-xl'>Agregar Categoria</h1>
+                                <h1 className='text-[#000000] font-semibold text-xl'>Agregar Categoria</h1>
                                 <div onClick={() => setShow(false)} className='block lg:hidden cursor-pointer'><GrClose className='text-[#d0d2d6]' /></div>
                             </div>
                             <form onSubmit={add_category}>

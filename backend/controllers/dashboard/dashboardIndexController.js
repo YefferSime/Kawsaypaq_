@@ -86,8 +86,8 @@ module.exports.get_seller_dashboard_data = async (req, res) => {
 }
 
 module.exports.get_admin_dashboard_data = async (req, res) => {
-    const { id } = req
     try {
+        // Obtener la suma total de ventas
         const totalSele = await myShopWallet.aggregate([
             {
                 $group: {
@@ -95,19 +95,42 @@ module.exports.get_admin_dashboard_data = async (req, res) => {
                     totalAmount: { $sum: '$amount' }
                 }
             }
-        ])
+        ]);
 
+        // Contar productos, órdenes y vendedores
+        const totalProduct = await productModel.find({}).countDocuments();
+        const totalOrder = await customerOrder.find({}).countDocuments();
+        const totalSeller = await sellerModel.find({}).countDocuments();
 
-        const totalProduct = await productModel.find({}).countDocuments()
+        // Obtener mensajes recientes
+        const messages = await adminSellerMessage.find({}).limit(3);
 
-        const totalOrder = await customerOrder.find({}).countDocuments()
+        // Obtener órdenes recientes con nombre de la tienda
+        const recentOrders = await customerOrder.aggregate([
+            {
+                $unwind: '$products', // Descomponer el array de productos
+            },
+            {
+                $lookup: {
+                    from: 'sellers', // Nombre de la colección de vendedores (si es necesario vincular más datos)
+                    localField: 'products.sellerId',
+                    foreignField: '_id',
+                    as: 'sellerInfo'
+                }
+            },
+            {
+                $project: {
+                    price: 1,
+                    date: 1,
+                    'shippingInfo.name': 1,
+                    shopName: '$products.shopName', // Extraer el nombre de la tienda
+                }
+            },
+            { $sort: { createdAt: -1 } }, // Ordenar por la fecha más reciente
+            { $limit: 5 } // Limitar a 5 órdenes recientes
+        ]);
 
-        const totalSeller = await sellerModel.find({}).countDocuments()
-
-        const messages = await adminSellerMessage.find({}).limit(3)
-
-        const recentOrders = await customerOrder.find({}).limit(5)
-
+        // Responder con los datos del dashboard
         responseReturn(res, 200, {
             totalOrder,
             totalSale: totalSele.length > 0 ? totalSele[0].totalAmount : 0,
@@ -115,10 +138,8 @@ module.exports.get_admin_dashboard_data = async (req, res) => {
             messages,
             recentOrders,
             totalProduct
-        })
-
+        });
     } catch (error) {
-        console.log('get admin dashboard data error ' + error.messages)
+        console.log('get admin dashboard data error ' + error.message);
     }
-
-}
+};
